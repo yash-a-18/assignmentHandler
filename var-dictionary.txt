@@ -17,7 +17,7 @@ Teacher_reg.html
 	teacher_image		:	"Image of the Teacher."
 Student_reg.html
 	student_first_name	:	"First name of the Student."
-	student_Middle_name	:	"Middle name of the Student."
+	student_middle_name	:	"Middle name of the Student."
 	student_last_name	:	"Last name of the Student."
 	student_dob		:	"Date of Birth of the Student."
 	student_semester	:	"Current Semester of the Student."
