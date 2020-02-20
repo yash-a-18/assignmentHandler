@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>
+		Student Registration
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body style="background-color:powderblue;">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	
+	<div class="container">
+		<div class="row justify-content-start">
+		    <div class="col-4">
+		      <h2>Student Registration</h2>
+		    </div>
+		</div>
+	</div>
+
+
+
+	<div class="alert alert-primary" role="alert">
+		<div class="container">	
+			<div class="row justify-content-end">
+			    <div class="col-2">
+					<a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+						Home
+					</a>
+			    </div>
+				<div class="col-2">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+					  	About
+					  </a>
+				</div>
+				<div class="col-2">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+					  	Courses
+						</a>
+				</div>
+				<div class="col-2">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+					  	Syllabus
+					  </a>
+				</div>
+				<div class="col-2">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+					  	Blog
+						</a>
+				</div>
+				<div class="col-2">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
+					  	Contact
+					  </a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row justify-content-start">
+			<div class="alert alert-success role="alert">
+				  <h4 class="alert-heading">Well done!</h4>
+				  <p>Aww yeah, you successfully read this important alert message.<br> 
+					This example text is going to run a bit longer so that you can<br> 
+					see how spacing within an alert works with this kind of content.</p>
+				  <hr>
+				  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep<br> 
+						things nice and tidy.</p>
+			</div>
+		</div>
+	</div>
+
+
+<center>
+	<form action="student_reg_success.php" method="post">
+	
+	<div class="form-group row">
+    <label for="student_first_name" class="col-sm-4 col-form-label">First Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_first_name" name="student_first_name" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_middle_name" class="col-sm-4 col-form-label">Middle Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_middle_name" name="student_middle_name" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_last_name" class="col-sm-4 col-form-label">Last Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_last_name" name="student_last_name" required>
+    </div>
+  </div>
+	
+  <div class="form-group row">
+    <label for="student_email" class="col-sm-4 col-form-label">Email</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="student_email" name="student_email" required>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="student_password" class="col-sm-4 col-form-label">Password</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_password" name="student_password" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_dob" class="col-sm-4 col-form-label">Birth Date</label>
+    <div class="col-sm-6">
+      <input type="date" class="form-control" id="student_dob" name="student_dob" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_semester" class="col-sm-4 col-form-label">Semester</label>
+    <div class="col-sm-6">
+      <!--input type="text" class="form-control" id="inputSemester"-->
+    	 <select id="student_semester" class="form-control" name="student_semester" required>
+        <option selected>Choose...</option>
+        <option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+      </select>
+	</div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_course" class="col-sm-4 col-form-label">Course</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_course" name="student_course" required>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_address" class="col-sm-4 col-form-label">Address</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_address" placeholder="1234 Main St" name="student_address" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_address2" class="col-sm-4 col-form-label">Address 2</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_address2" placeholder="Apartment, studio, or floor" name="student_address2" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+  
+    <div class="form-group col-sm-4">
+      <label for="student_city" class="col-md-6 col-form-label">City</label>
+	  <div class="col-md-6">
+      <input type="text" class="form-control" id="student_city" name="student_city" required>
+    </div>
+	</div>
+	
+    <div class="form-group col-sm-4">
+      <label for="student_state" class="col-md-6 col-form-label">State</label>
+	  <div class="col-md-6">
+      <input type="text" id="student_state" class="form-control" name="student_state" required>
+    </div>
+	</div>
+	
+    <div class="form-group col-sm-4">
+      <label for="student_zip" class="col-md-6 col-form-label">Zip</label>
+	  <div class="col-md-6">
+      <input type="text" class="form-control" id="student_zip" name="student_zip">
+    </div>
+	</div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_mobile_no" class="col-sm-4 col-form-label">Mobile No.</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_mobile_no" name="student_mobile_no" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_id_no" class="col-sm-4 col-form-label">Id No.</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_id_no" name="student_id_no" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_image" class="col-sm-4 col-form-label">Upload Image</label>
+	<div class="col-sm-6">
+    <input type="file" class="form-control-file" id="student_image" name="student_image" required>
+  </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+  </form>
+</center>
+
+
+
+
+
+
+
+	<br><div class="container">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+	</div>
+</body>
+</html>
