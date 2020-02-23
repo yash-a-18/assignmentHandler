@@ -83,7 +83,7 @@
 	</div>
 
 <center>
-	<form action="" method="post">
+	<form action="teacher_reg_success.php" method="post" enctype="multipart/form-data">
 	
 	<div class="form-group row">
     <label for="teacher_first_name" class="col-sm-4 col-form-label">First Name</label>
@@ -119,6 +119,19 @@
     </div>
   </div>
 
+  
+	<div class="form-group row">
+    <label for="teacher_gender" class="col-sm-4 col-form-label">Gender</label>
+    <div class="col-sm-3">
+      <label for="teacher_gender_female" class="col-sm-4 col-form-label">Female</label>
+      <input type="radio" class="form-control" id="teacher_gender" name="teacher_gender" value="female" required>
+    </div>
+    <div class="col-sm-3">
+      <label for="teacher_gender_male" class="col-sm-4 col-form-label">Male</label>
+      <input type="radio" class="form-control" id="teacher_gender" name="teacher_gender" value="male" required>
+    </div>
+  </div>
+
 	
 	<div class="form-group row">
     <label for="teacher_dob" class="col-sm-4 col-form-label">Birth Date</label>
@@ -126,7 +139,8 @@
       <input type="date" class="form-control" id="teacher_dob" name="teacher_dob" required>
     </div>
   </div>
-	
+  
+  
 	<!--<div class="form-group row">
     <label for="inputSemester" class="col-sm-4 col-form-label">Semester</label>
     <div class="col-sm-6">
