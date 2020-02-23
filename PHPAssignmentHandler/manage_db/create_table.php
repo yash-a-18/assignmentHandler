@@ -66,7 +66,6 @@ try{
     )";
     $query_user_table=$dbhandler->query($sql_users);
     echo "<br>User Table is created successfully<br>";
-
 }
 catch(PDOException $e){
     echo "unable to create users<br>";
