@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'manageSubmissions.apps.ManagesubmissionsConfig',
+    'manageAssignments.apps.ManageassignmentsConfig',
     'RegistrationModule.apps.RegistrationmoduleConfig',
     'django.contrib.admin',
     'django.contrib.auth',

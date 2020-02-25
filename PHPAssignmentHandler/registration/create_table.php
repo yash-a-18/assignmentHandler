@@ -40,11 +40,11 @@ try{
             PRIMARY KEY (teacher_email)
             )";
         
-    
+    //remember to remove user when removing student 
     $sql_users="create table Users(
         user_email VARCHAR(100) NOT NULL PRIMARY KEY,
         user_password VARCHAR(15) NOT NULL,
-        user_type VARCHAR(10) NOT NULL
+        user_type VARCHAR(10) NOT ,
     )";
     $query_student_table=$dbhandler->query($sql_students);
     $query_teachers_table=$dbhandler->query($sql_teachers);

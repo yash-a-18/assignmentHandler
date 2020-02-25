@@ -19,4 +19,6 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Register/',include('RegistrationModule.urls')),
+    path('manageAssignments/',include('manageAssignments.urls')),
+    path('manageSubmissions/',include('manageSubmissions.urls')),
 ]
