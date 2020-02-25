@@ -2,15 +2,14 @@ from django.db import models
 
 # Create your models here.##      &"C:\Program Files\sqlite\sqlite3.exe" .\db.sqlite3      ##to check changes
 
-
 class Courses(models.Model):
     c_id=models.CharField(max_length=10,primary_key=True)
     c_name=models.CharField(max_length=20)
     c_credit=models.DecimalField(decimal_places=2,max_digits=5)
 
-class Users(models.Model):
+class AppUsers(models.Model):
     user_email=models.CharField(max_length=50,primary_key=True)
-    student_password=models.CharField(max_length=20)
+    user_password=models.CharField(max_length=20)
 
 class Student(models.Model):
     '''class for student db'''
@@ -33,7 +32,8 @@ class Student(models.Model):
     student_image=models.ImageField(upload_to='stu_pics')
     models.DateTimeField()
 
-class StdentCourse(models.Model):
+# Create your models here.
+class StudentCourse(models.Model):
     student_email=models.CharField(max_length=50)
     c_id=models.CharField(max_length=10)
     models.ForeignKey(Courses,on_delete=models.CASCADE)
@@ -60,29 +60,3 @@ class Teacher(models.Model):
     teacher_id_no=models.CharField(max_length=15)
     teacher_image=models.ImageField(upload_to='teacher_pics')
     models.DateTimeField()
-
-
-class Assignment(models.Model):
-    assign_id=models.CharField(max_length=10,primary_key=True)
-    assign_name=models.CharField(max_length=50)
-    teacher_email=models.CharField(max_length=50)
-    c_id=models.CharField(max_length=10)
-    initial_date=models.DateTimeField()
-    assign_due_date=models.DateTimeField()
-    assign_max_size_kb=models.IntegerField()
-    models.ForeignKey(Courses,on_delete=models.CASCADE)
-    models.ForeignKey(Teacher,on_delete=models.CASCADE)
-
-class Submission(models.Model):
-    assign_id=models.CharField(max_length=10)
-    student_email=models.CharField(max_length=50)
-    submission_date=models.DateTimeField()
-    submission_file_name=models.CharField(max_length=50)
-    submission_marks_logic=models.BooleanField(max_length=6)
-    submission_marks_uniqueness=models.BooleanField(max_length=6)
-    submission_marks_quality=models.BooleanField(max_length=6)
-    models.ForeignKey(Assignment,on_delete=models.CASCADE)
-    models.ForeignKey(Student,on_delete=models.CASCADE)
-    '''to set a composite primary key'''
-    class Meta:
-        unique_together = ('assign_id', 'student_email')
