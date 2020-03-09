@@ -57,7 +57,7 @@ def putStudentData(request):
                 id_no=t_id_no,
                 image=t_image)
     stu.save()
-    user=User(username=t_username,password=t_password )
+    user=User(username=t_stu_email,password=t_password )
     user.save()
     return HttpResponseRedirect(request,'login.html')
 
@@ -109,4 +109,4 @@ def authentication(request):
         return HttpResponseRedirect(request,'HomePage.html')
     else:
         messages.error(request, 'Invalid Username/Password..')
-        return render(request,'login.html')
+        return render(request,'login(test).html')
