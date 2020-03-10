@@ -37,32 +37,32 @@ and open the template in the editor.
 		<div class="container">	
 			<div class="row justify-content-end">
 			    <div class="col-2">
-					<a class="btn btn-outline-primary" href="HomePage.html" role="button">
+					<a class="btn btn-outline-primary" href="StudentHomePage.html" role="button">
 						Home
 					</a>
 			    </div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="/Register/Login.html" role="button">
 					  	About
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="/Register/Login.html" role="button">
 					  	Courses
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="/Register/Login.html" role="button">
 					  	Syllabus
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="/Register/Login.html" role="button">
 					  	Blog
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="/Register/Login.html" role="button">
 					  	Contact
 					  </a>
 				</div>
@@ -95,11 +95,11 @@ and open the template in the editor.
       <td>27/06</td>
       <td><a href="#">#</a></td>
 	</tr>
-	{{for ass in ass_list }}
+	{%for ass in ass_list %}
 	<tr>
 		<td>{{ass.assign_id}}</td>
 	</tr>
-	{{endfor}}
+	{%endfor%}
   </tbody>
 </table>
     </body>

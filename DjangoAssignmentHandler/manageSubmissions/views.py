@@ -3,19 +3,30 @@ import datetime
 from django.db import models
 from manageSubmissions.models import Assignment
 from RegistrationModule.models import StudentCourse,Student,Courses
+from django.template.context_processors import csrf
+
+
 # Create your views here.
 def submissionPage(request):
-    student_data=Student.objects.get(student_email=request.user.username)
-    student_course=StudentCourse.objects.get(student_email=student_data.student_email)
-    '''28/02/2020'''
-    #all_assign=Assignment.object.all()
-    ass_id_list=[]
-    todays_date=datetime.datetime()
-    for course in student_course:
-        #all_assign=Assignment.object.all(c_id=course.c_id)
+    #print(request.user.username)
+    try:
+        student_course=StudentCourse.objects.filter(student_email=request.user.username)
+        #print(student_course[0].c_id)
+        #print(StudentCourse.objects.all()[0].student_email)
+        '''28/02/2020'''
+        #all_assign=Assignment.object.all()
+        ass_id_list=[]
+        for course in student_course:
+            all_assign=Assignment.objects.filter(c_id=course.c_id).filter(assign_due_date__gte=datetime.date.today())
+            for temp_ass in all_assign:
+                ass_id_list.append(temp_ass)
+        #print(ass_id_list[0].c_id)
+    except Student.DoesNotExist:
+        ass_id_list = None
+    c={'ass_list':ass_id_list}
+    c.update(csrf(request))
+    return render(request,'SubmissionPage.html',c)
 
-        all_assign=Assignment.objects.filter(models.Q(c_id=course.c_id) & models.Q(assign_due_date>todays_date))
-        ass_id_list.append(all_assign)
-    print(ass_id_list)
-    
-    return render(request,'SubmissionPage.html')
+def addSubmission(request):
+    '''logic to add submission file on system and'''
+    pass
