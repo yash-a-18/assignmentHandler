@@ -8,8 +8,8 @@ class Courses(models.Model):
     c_credit=models.DecimalField(decimal_places=2,max_digits=5)
 
 class AppUsers(models.Model):
-    user_email=models.CharField(max_length=50,primary_key=True)
-    user_password=models.CharField(max_length=20)
+   user_email=models.CharField(max_length=50,primary_key=True)
+   user_password=models.CharField(max_length=20)
 
 class Student(models.Model):
     '''class for student db'''

@@ -20,7 +20,7 @@ def studentReg(request):
 def login(request):
     c={}
     c.update(csrf(request))
-    return render(request,'login.html',c)
+    return render(request,'login(test).html',c,messages.success(request,'Hello User'))
 
 def putStudentData(request):
     t_first_name=request.POST.get('student_first_name',default=none)
@@ -57,11 +57,12 @@ def putStudentData(request):
                 id_no=t_id_no,
                 image=t_image)
     stu.save()
-    user=User(username=t_username,password=t_password )
+    user=User(username=t_stu_email,password=t_password )
     user.save()
-    return HttpResponseRedirect(request,'login.html')
+    return render(request,'login(test).html')
 
 def putTeacherData(request):
+    
     t_first_name=request.POST.get('teacher_first_name',default=none)
     t_middle_name=request.POST.get('teacher_middle_name',default=none)
     t_last_name=request.POST.get('teacher_last_name',default=none)
@@ -70,7 +71,7 @@ def putTeacherData(request):
     t_dob=request.POST.get('teacher_dob',default=none)
     t_semester=request.POST.get('teacher_semester',default=none)
     t_course=request.POST.get('teacher_course',default=none)
-    t_stu_email=request.POST.get('teacher_email',default=none)
+    t_tchr_email=request.POST.get('teacher_email',default=none)
     t_address=request.POST.get('teacher_address',default=none)
     t_address2=request.POST.get('teacher_address2',default=none)
     t_city=request.POST.get('teacher_city',default=none)
@@ -86,7 +87,7 @@ def putTeacherData(request):
                 dob=t_dob,
                 semester=t_semester,
                 course=t_course,
-                stu_email=t_stu_email,
+                teacher_email=t_tchr_email,
                 address=t_address,
                 address2=t_address2,
                 city=t_city,
@@ -96,9 +97,9 @@ def putTeacherData(request):
                 id_no=t_id_no,
                 image=t_image)
     tchr.save()
-    user=User(username=t_username,password=t_password )
+    user=User(username=t_tchr_email,password=t_password )
     user.save()
-    return HttpResponseRedirect(request,'login.html')
+    return render(request,'login(test).html')
 
 def authentication(request):
     username=request.POST.get('user_name',default=none)
@@ -108,5 +109,4 @@ def authentication(request):
         auth.login(request,User)
         return HttpResponseRedirect(request,'HomePage.html')
     else:
-        messages.error(request, 'Invalid Username/Password..')
-        return render(request,'login.html')
+        return render(request,'login(test).html',messages.error(request, 'Invalid Username/Password..'))

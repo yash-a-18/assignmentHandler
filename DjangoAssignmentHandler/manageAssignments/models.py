@@ -13,5 +13,7 @@ class Assignment(models.Model):
     assign_max_size_kb=models.IntegerField()
     models.ForeignKey(Courses,on_delete=models.CASCADE)
     models.ForeignKey(Teacher,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.assign_name
 
 
