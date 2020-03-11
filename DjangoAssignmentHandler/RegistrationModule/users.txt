@@ -1,0 +1,8 @@
+1. superuser
+unm:dummy
+pass:dummy1234
+
+2.
+unm:dummy@ddu.ac.in
+passwd:dummy@1234
+

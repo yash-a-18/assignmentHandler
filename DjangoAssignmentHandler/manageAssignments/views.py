@@ -1,4 +1,5 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from django.contrib import messages
 from manageAssignments.models import Assignment
 # Create your views here.
@@ -22,3 +23,10 @@ def putAssignmentData(request):
                     )
     assign.save()
     return render(request,'AssignmentPage.html',message.success(request,'Assignment added successfully!!!'))
+=======
+from manageAssignments.models import Assignment
+# Create your views here.
+def displayStudentAssignmentList(request):
+    ass_list=Assignment.objects.all()
+    return render(request,"StudentHomePage.html",{"ass_list":ass_list})
+>>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34

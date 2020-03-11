@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>
-		Teacher's Registration
+		Student Registration
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body style="background-color:powderblue;">
-	{%block content%}
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 	<div class="container">
 		<div class="row justify-content-start">
 		    <div class="col-4">
-		      <h2>Teacher's Registration</h2>
+		      <h2>Student Registration</h2>
 		    </div>
 		</div>
 	</div>
@@ -36,32 +36,32 @@
 		<div class="container">	
 			<div class="row justify-content-end">
 			    <div class="col-2">
-					<a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+					<a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 						Home
 					</a>
 			    </div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 					  	About
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 					  	Courses
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 					  	Syllabus
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 					  	Blog
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Teacher_reg.html" role="button">
+				      <a class="btn btn-outline-primary" href="Student_reg.html" role="button">
 					  	Contact
 					  </a>
 				</div>
@@ -82,61 +82,43 @@
 		</div>
 	</div>
 
+
 <center>
-	<form action="putTeacherData" method="post">
-	{% csrf_token %}
+	<form action="" method="post">
+	
 	<div class="form-group row">
-    <label for="teacher_first_name" class="col-sm-4 col-form-label">First Name</label>
+    <label for="inputFirstName" class="col-sm-4 col-form-label">First Name</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="teacher_first_name" name="teacher_first_name" required>
+      <input type="text" class="form-control" id="inputFirstName" name="student_first_name" required>
     </div>
   </div>
 	
 	<div class="form-group row">
-    <label for="teacher_Middle_name" class="col-sm-4 col-form-label">Middle Name</label>
+    <label for="inputMiddleName" class="col-sm-4 col-form-label">Middle Name</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="teacher_Middle_name" name="teacher_Middle_name" required>
+      <input type="text" class="form-control" id="inputMiddleName" name="student_middle_name" required>
     </div>
   </div>
 	
 	<div class="form-group row">
-    <label for="teacher_last_name" class="col-sm-4 col-form-label">Last Name</label>
+    <label for="inputLastName" class="col-sm-4 col-form-label">Last Name</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="teacher_last_name"  name="teacher_last_name"required>
+      <input type="text" class="form-control" id="inputLastName" name="student_last_name" required>
     </div>
   </div>
 	
 	<div class="form-group row">
-    <label for="teacher_dob" class="col-sm-4 col-form-label">Birth Date</label>
+    <label for="inputDOB" class="col-sm-4 col-form-label">Birth Date</label>
     <div class="col-sm-6">
-      <input type="date" class="form-control" id="teacher_dob" name="teacher_dob" required>
+      <input type="date" class="form-control" id="inputDOB" name="student_dob" required>
     </div>
   </div>
 	
 	<div class="form-group row">
-    <label for="teacher_gender" class="col-sm-4 col-form-label">Gender</label>
-    <div class="col-auto">
-		<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="teacher_gender" id="teacher_gender" value="Male">
-  <label class="form-check-label" for="teacher_gender">Male</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="teacher_gender" id="teacher_gender" value="Female">
-  <label class="form-check-label" for="teacher_gender">Female</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="teacher_gender" id="teacher_gender" value="Other">
-  <label class="form-check-label" for="teacher_gender">Other</label>
-</div>
-	</div>
-	</div>
-	
-	
-	<!--<div class="form-group row">
     <label for="inputSemester" class="col-sm-4 col-form-label">Semester</label>
     <div class="col-sm-6">
-      <!--input type="text" class="form-control" id="inputSemester"
-    	 <select id="inputSemester" class="form-control" required>
+      <!--input type="text" class="form-control" id="inputSemester"-->
+    	 <select id="inputSemester" class="form-control" name="student_semester" required>
         <option selected>Choose...</option>
         <option>1</option>
 		<option>2</option>
@@ -148,78 +130,78 @@
 		<option>8</option>
       </select>
 	</div>
-  </div>-->
+  </div>
 	
-	<!--<div class="form-group row">
+	<div class="form-group row">
     <label for="inputCourse" class="col-sm-4 col-form-label">Course</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputCourse"  name="teacher_course" required>
+      <input type="text" class="form-control" id="inputCourse" name="student_course" required>
     </div>
-  </div>-->
+  </div>
 	
   <div class="form-group row">
-    <label for="teacher_email" class="col-sm-4 col-form-label">Email</label>
+    <label for="inputEmail3" class="col-sm-4 col-form-label">Email</label>
     <div class="col-sm-6">
-      <input type="email" class="form-control" id="teacher_email" name="teacher_email" required>
+      <input type="email" class="form-control" id="inputEmail3" name="student_email" required>
     </div>
   </div>
   
   <div class="form-group row">
-    <label for="teacher_address" class="col-sm-4 col-form-label">Address</label>
+    <label for="inputAddress" class="col-sm-4 col-form-label">Address</label>
 	<div class="col-sm-6">
-    <input type="text" class="form-control" id="teacher_address" placeholder="1234 Main St" name="teacher_address" required>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="student_address" required>
   </div>
   </div>
   
   <div class="form-group row">
-    <label for="teacher_address2" class="col-sm-4 col-form-label">Address 2</label>
+    <label for="inputAddress2" class="col-sm-4 col-form-label">Address 2</label>
 	<div class="col-sm-6">
-    <input type="text" class="form-control" id="teacher_address2" placeholder="Apartment, studio, or floor" name="teacher_address2" required>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="student_address2" required>
   </div>
   </div>
   
   <div class="form-group row">
   
     <div class="form-group col-sm-4">
-      <label for="teacher_city" class="col-md-6 col-form-label">City</label>
+      <label for="inputCity" class="col-md-6 col-form-label">City</label>
 	  <div class="col-md-6">
-      <input type="text" class="form-control" id="teacher_city" name="teacher_city" required>
+      <input type="text" class="form-control" id="inputCity" name="student_city" required>
     </div>
 	</div>
 	
     <div class="form-group col-sm-4">
-      <label for="teacher_state" class="col-md-6 col-form-label">State</label>
+      <label for="inputState" class="col-md-6 col-form-label">State</label>
 	  <div class="col-md-6">
-      <input type="text" id="teacher_state" class="form-control" name="teacher_state" required>
+      <input type="text" id="inputState" class="form-control" name="student_state" required>
     </div>
 	</div>
 	
     <div class="form-group col-sm-4">
-      <label for="teacher_zip" class="col-md-6 col-form-label">Zip</label>
+      <label for="inputZip" class="col-md-6 col-form-label">Zip</label>
 	  <div class="col-md-6">
-      <input type="text" class="form-control" id="teacher_zip" name="teacher_zip">
+      <input type="text" class="form-control" id="inputZip" name="student_zip">
     </div>
 	</div>
   </div>
   
   <div class="form-group row">
-    <label for="teacher_mobile_no" class="col-sm-4 col-form-label">Mobile No.</label>
+    <label for="inputMobileNo" class="col-sm-4 col-form-label">Mobile No.</label>
 	<div class="col-sm-6">
-    <input type="text" class="form-control" id="teacher_mobile_no" name="teacher_mobile_no" required>
+    <input type="text" class="form-control" id="inputMobileNo" name="student_mobile_no" required>
   </div>
   </div>
   
   <div class="form-group row">
-    <label for="teacher_id_no" class="col-sm-4 col-form-label">Id No.</label>
+    <label for="inputIdNo" class="col-sm-4 col-form-label">Id No.</label>
 	<div class="col-sm-6">
-    <input type="text" class="form-control" id="teacher_id_no" name="teacher_id_no" required>
+    <input type="text" class="form-control" id="inputIdNo" name="student_id_no" required>
   </div>
   </div>
   
   <div class="form-group row">
-    <label for="teacher_image" class="col-sm-4 col-form-label">Upload Image</label>
+    <label for="StudentImage" class="col-sm-4 col-form-label">Upload Image</label>
 	<div class="col-sm-6">
-    <input type="file" class="form-control-file" id="teacher_image" name="teacher_image" required>
+    <input type="file" class="form-control-file" id="StudentImage" name="student_image" required>
   </div>
   </div>
   
@@ -242,6 +224,5 @@
   			</button>
 		</div>
 	</div>
-	{%endblock%}
 </body>
 </html>

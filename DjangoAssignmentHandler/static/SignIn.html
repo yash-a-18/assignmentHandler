@@ -9,17 +9,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>
-		Login
+		SignIn
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body style="background-color:powderblue;">
-<<<<<<< HEAD
-=======
-	
-	{% block content %}
-
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -31,7 +25,7 @@
 	<div class="container">
 		<div class="row justify-content-start">
 		    <div class="col-4">
-		      <h2>Login</h2>
+		      <h2>Sign IN</h2>
 		    </div>
 		</div>
 	</div>
@@ -42,32 +36,32 @@
 		<div class="container">	
 			<div class="row justify-content-end">
 			    <div class="col-2">
-					<a class="btn btn-outline-primary" href="Login.html" role="button">
+					<a class="btn btn-outline-primary" href="SignIn.html" role="button">
 						Home
 					</a>
 			    </div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="SignIn.html" role="button">
 					  	About
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="SignIn.html" role="button">
 					  	Courses
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="SignIn.html" role="button">
 					  	Syllabus
 					  </a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="SignIn.html" role="button">
 					  	Blog
 						</a>
 				</div>
 				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
+				      <a class="btn btn-outline-primary" href="SignIn.html" role="button">
 					  	Contact
 					  </a>
 				</div>
@@ -77,11 +71,7 @@
 	<div class="container">
 		<div class="row justify-content-start">
 			<div class="alert alert-success role="alert">
-<<<<<<< HEAD
 				  <h4 class="alert-heading">Well done!</h4>
-=======
-				  <h4 class="alert-heading">{{message}}</h4>
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
 				  <p>Aww yeah, you successfully read this important alert message.<br> 
 					This example text is going to run a bit longer so that you can<br> 
 					see how spacing within an alert works with this kind of content.</p>
@@ -92,56 +82,24 @@
 		</div>
 	</div>
 
-
-
-<center>
-<<<<<<< HEAD
-	<form action="" method="post">
-	
-	<div class="form-group row">
-    <label for="user_name" class="col-sm-4 col-form-label">User Name</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" id="user_name" name="user_name" required>
-=======
-	<form action="authentication.html" method="post">
-		{% csrf_token %}
-	<div class="form-group row">
-    <label for="inputUserName" class="col-sm-4 col-form-label">User Name</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputUserName" name="user_name" required>
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
-    </div>
+	<center><div class="card" style="width: 18rem;">
+  <img src="download.jfif" class="card-img-top" alt="Teacher">
+  <div class="card-body">
+    <h5 class="card-title">For Teachers</h5>
+    <p class="card-text">Click on the button below for Sign In....<strong>Only for Teachers</strong></p>
+    <a href="Teacher_reg.html" class="btn btn-primary stretched-link">Sign Up</a>
   </div>
-	
-	<div class="form-group row">
-<<<<<<< HEAD
-    <label for="user_password" class="col-sm-4 col-form-label">Password</label>
-    <div class="col-sm-6">
-      <input type="password" class="form-control" id="user_password" name="user_password" required>
-=======
-    <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
-    <div class="col-sm-6">
-      <input type="password" class="form-control" id="inputPassword" name="user_password" required>
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
-    </div>
   </div>
-	
+  <br>
+	<div class="card" style="width: 18rem;">
+  <img src="student_img.jfif" class="card-img-top" alt="Student">
+  <div class="card-body">
+    <h5 class="card-title">For Students</h5>
+    <p class="card-text">Click on the button below for Sign In....<strong>Only for Students</strong></p>
+    <a href="Student_reg.html" class="btn btn-primary stretched-link">Sign Up</a>
+  </div>
+</div>  
+  </center>
 
-  
-  <button type="submit" class="btn btn-primary">Login</button>
-<<<<<<< HEAD
-  <br><strong>No Account???....<a href="Register/SignIn">Sign In</a></strong>
-  
-  </form>
-</center>
-=======
-  <br><strong>No Account???....<a href="SignIn.html">Sign In</a></strong>
-  
-  </form>
-  
-</center>
-
-{% endblock %}
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
 </body>
 </html>
