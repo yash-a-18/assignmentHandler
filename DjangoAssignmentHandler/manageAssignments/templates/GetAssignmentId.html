@@ -1,0 +1,27 @@
+{% extends 'Teacher_base.html' %}
+        {%block content%}
+        
+        <br>
+        <center>
+	<form action="/manageSubmissions/DisplayingAssignment.html" method="post" style="background-color:wheat">
+		{% csrf_token %}
+	<div class="form-group row">
+    <label for="teacher_assignment_id" class="col-sm-4 col-form-label">Assignment Id</label>
+    <div class="col-sm-6">
+      <!--input type="text" class="form-control" id="student_assignment_id"-->
+    	 <select id="teacher_assignment_id" class="form-control" name="teacher_assignment_id" required>
+             <option selected>Choose...</option>
+        <option>1</option>
+		<option>2</option>
+		<!--{%for ass in ass_list%}
+			<option>{{ass.assign_id}}</option>
+		{%endfor%}-->
+      </select>
+	</div>
+  </div>
+	
+<button type="submit" class="btn btn-primary" style="background-color:saddlebrown">Submit</button>
+  
+  </form>
+</center>
+{% endblock %}
