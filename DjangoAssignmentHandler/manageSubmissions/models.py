@@ -8,7 +8,7 @@ class Submission(models.Model):
     assign_id=models.CharField(max_length=10)
     student_email=models.CharField(max_length=50)
     submission_date=models.DateTimeField()
-    submission_file_name=models.CharField(max_length=50)
+    submission_file_name=models.FileField(max_length=50)
     submission_marks_logic=models.BooleanField(max_length=6)
     submission_marks_uniqueness=models.BooleanField(max_length=6)
     submission_marks_quality=models.BooleanField(max_length=6)
