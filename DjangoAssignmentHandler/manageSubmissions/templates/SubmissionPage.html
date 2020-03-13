@@ -2,6 +2,27 @@
         {%block content%}
         
         <br>
+        <div class="row">
+        <label for="student_assignment_id" class="col-sm-4 col-form-label">Assignment Id</label>
+        <div class="col-sm-6">
+           <select id="teacher_course_name" class="form-control" name="teacher_course_name" required>
+                 <option selected>Choose...</option>
+            <option>1</option>
+        <option>2</option>
+          </select>
+      </div>
+      </div><br>
+
+      <div class="row">
+        <label for="student_assignment_id" class="col-sm-4 col-form-label">Assignment Id</label>
+      <div class="col-sm-6">
+         <select id="teacher_course_name" class="form-control" name="teacher_course_name" required>
+               <option selected>Choose...</option>
+          <option>1</option>
+      <option>2</option>
+        </select>
+    </div>
+</div><br>
         <center>
 	<form action="/manageSubmissions/addSubmission" method="post" style="background-color:wheat">
 		{% csrf_token %}
