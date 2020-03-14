@@ -174,7 +174,12 @@ def authentication(request):
     if User is not None:
         auth.login(request,User)
         #return HttpResponseRedirect(request,'/manageAssignment/StudentHomePage.html')
-        return HttpResponseRedirect('/manageAssignments/StudentHomePage.html')
+        stu_list=Student.objects.all()
+        stu_email_list=[st.student_email for st in stu_list]
+        if username in stu_email_list:
+            return HttpResponseRedirect('/manageAssignments/StudentHomePage.html')
+        else:
+            return HttpResponseRedirect('/manageAssignments/TeacherHomePage.html')
     else:
         #messages.error(request, 'Invalid Username/Password..')
         message='Invalid Username/Password..'
