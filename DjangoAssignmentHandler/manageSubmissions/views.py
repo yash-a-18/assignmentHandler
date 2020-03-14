@@ -78,3 +78,9 @@ def addSubmission(request):
     pass
 >>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
 '''
+def studentSubmissionDisplay(request):
+    if request.user.is_authenticated:
+        return render(request,'StudentSubmissionDisplay.html')
+    else:
+        return HttpResponseRedirect('/')
+

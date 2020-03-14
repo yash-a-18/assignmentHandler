@@ -64,20 +64,20 @@ def displayStudentAssignmentList(request):
         return HttpResponseRedirect('/')
 
     
-def studentAssignmentDisplay(request):
-    if request.user.is_authenticated:
-        return render(request,'StudentAssignmentDisplay.html')
-    else:
-        return HttpResponseRedirect('/')
-
 
 def teacherAssignmentDisplay(request):
     #list of assignments created by the logged in teacher
     if request.user.is_authenticated:
-        ass_list=Assignment.objects.filter(teacher_email=request.user.username)
-        ass_list.reverse()
-        c={'ass_list':ass_list}
+        if request.method =="POST":
+            course_id=Courses.object.get(c_name=request.POST.get("teacher_course_name"))
+            ass_list=Assignment.objects.filter(teacher_email=request.user.username)
+            ass_list.reverse()
+            c={'ass_list':ass_list}
+            c.update(csrf(request))
+            return render(request,"TeacherAssignmentDisplay.html",c)    
+        c={}
         c.update(csrf(request))
-        return render(request,"TeacherAssignmentDisplay.html",c)
+        return render(request,"TeacherAssignmentDisplay.html",c)    
+        
     else:
         return HttpResponseRedirect('/')

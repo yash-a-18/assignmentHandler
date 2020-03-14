@@ -1,7 +1,20 @@
 {% extends 'Student_base.html' %}
 	{% block content %}
-        
-        <table class="table table-striped" style="background-color:bisque">
+    <br>
+    <div class="row">
+    <label for="student_course" class="col-sm-4 col-form-label">Course</label>
+    <div class="col-sm-6">
+      <select id="student_course_name" class="form-control" name="student_course_name" required>
+            <option selected>Choose...</option>
+        <option>1</option>
+    <option>2</option>
+      </select>
+  </div>
+  </div><br>
+
+  
+
+  <table class="table table-striped" style="background-color:bisque">
   <thead>
     <tr>
       <th scope="col">Assignment Id</th>

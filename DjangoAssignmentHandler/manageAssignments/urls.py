@@ -7,7 +7,7 @@ urlpatterns=[
     path('AssignmentPage.html',views.AssignmentPage,name='AssignmentPage'),
     path('createAssignment',views.putAssignmentData,name='putAssignmentData'),
     path('StudentHomePage.html',views.displayStudentAssignmentList,name='student_home'),
-    path('StudentAssignmentDisplay.html',views.studentAssignmentDisplay,name='StudentAssignmentDisplay'),
+    #path('StudentAssignmentDisplay.html',views.studentAssignmentDisplay,name='StudentAssignmentDisplay'),
     path('TeacherAssignmentDisplay.html',views.teacherAssignmentDisplay,name='TeacherAssignmentDisplay'),
     
 ]

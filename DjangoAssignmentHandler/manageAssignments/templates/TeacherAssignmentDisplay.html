@@ -3,13 +3,13 @@
         
         <br>
         <center>
-	<form action="/manageSubmissions/GetAssignmentId.html" method="post" style="background-color:wheat">
+	<form action="/manageSubmissions/TeacherAssignmentDisplay.html" method="post" style="background-color:wheat">
 		{% csrf_token %}
 	<div class="form-group row">
     <label for="teacher_course_name" class="col-sm-4 col-form-label">Course Name</label>
     <div class="col-sm-6">
       <!--input type="text" class="form-control" id="student_assignment_id"-->
-    	 <select id="teacher_course_name" class="form-control" name="teacher_course_name" required>
+    	 <select id="teacher_course_name" class="form-control" name="teacher_course_name" required onchange="this.form.submit()">
              <option selected>Choose...</option>
         <option>1</option>
 		<option>2</option>
