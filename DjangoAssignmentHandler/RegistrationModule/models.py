@@ -29,7 +29,7 @@ class Student(models.Model):
     student_zip=models.CharField(max_length=7)
     student_mobile_no=models.CharField(max_length=15)
     student_id_no=models.CharField(max_length=15)
-    student_image=models.ImageField(upload_to='stu_pics')
+    student_image=models.ImageField(upload_to='stu_pics',blank=True)
     models.DateTimeField()
 
 # Create your models here.
@@ -58,5 +58,5 @@ class Teacher(models.Model):
     teacher_zip=models.CharField(max_length=7)
     teacher_mobile_no=models.CharField(max_length=15)
     teacher_id_no=models.CharField(max_length=15)
-    teacher_image=models.ImageField(upload_to='teacher_pics')
+    teacher_image=models.ImageField(upload_to='teacher_pics',blank=True)
     models.DateTimeField()

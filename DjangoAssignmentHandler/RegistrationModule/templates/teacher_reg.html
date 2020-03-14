@@ -2,7 +2,7 @@
 {% block content %}
 
 <center>
-	<form action="putTeacherData" method="post">
+	<form action="putTeacherData" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="form-group row">
     <label for="teacher_first_name" class="col-sm-4 col-form-label">First Name</label>

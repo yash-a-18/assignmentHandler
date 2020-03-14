@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from django.contrib import messages
 from RegistrationModule.models import Teacher, Student
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def signInUser(request):
     return render(request,'sign_in.html')
@@ -58,7 +59,7 @@ def putStudentData(request):
     t_zip_code=request.POST.get('student_zip',default=None)
     t_mobile_no=request.POST.get('student_mobile_no',default=None)
     t_id_no=request.POST.get('student_id_no',default=None)
-    t_image=request.POST.get('student_image',default=None)
+    #t_image=request.FILES('student_image',default=None)
     stu=Student(student_first_name=t_first_name,
                 student_middle_name=t_middle_name,
                 student_last_name=t_last_name,
@@ -74,10 +75,12 @@ def putStudentData(request):
                 student_zip=t_zip_code,
                 student_mobile_no=t_mobile_no,
                 student_id_no=t_id_no,
-                student_image=t_image)
+    #            student_image=t_image
+                )
     stu.save()
     user=User(username=t_stu_email,password=t_password )
     user.save()
+    
 
     message="Hey there Student!! , you are now successfully registered"
     c={'message':message}
@@ -85,9 +88,15 @@ def putStudentData(request):
     return render(request ,'Login.html',c)
 #<<<<<<< HEAD
     #return render(request,'login(test).html')
+    def uploadStudentImage(request):
+        if request.method=='POST':
+            t_image=request.FILES('student_image')
+            fs=FileSystemStorage()
+            name=fs.save(t_image.name,t_image)
 
 
-def putTeacherData(request):
+
+'''def putTeacherData(request):
     
     t_first_name=request.POST.get('teacher_first_name',default=None)
     t_middle_name=request.POST.get('teacher_middle_name',default=None)
@@ -105,14 +114,14 @@ def putTeacherData(request):
     t_zip_code=request.POST.get('teacher_zip',default=None)
     t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
     t_id_no=request.POST.get('teacher_id_no',default=None)
-    t_image=request.POST.get('teacher_image',default=None)
+    t_image=request.FILES('teacher_image',default=None)
 #=======
     message="Hey there Student!! , you are now successfully registered"
     c={'message':message}
     c.update(csrf(request))
     return render(request ,'Login.html',c)
     #return HttpResponseRedirect('Login.html',c)
-
+'''
 def putTeacherData(request):
     t_first_name=request.POST.get('teacher_first_name',default=None)
     t_middle_name=request.POST.get('teacher_middle_name',default=None)
@@ -130,7 +139,7 @@ def putTeacherData(request):
     t_zip_code=request.POST.get('teacher_zip',default=None)
     t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
     t_id_no=request.POST.get('teacher_id_no',default=None)
-    t_image=request.POST.get('teacher_image',default=None)
+    t_image=request.FILES('teacher_image',default=None)
     tchr=Teacher(first_name=t_first_name,
                 middle_name=t_middle_name,
                 last_name=t_last_name,

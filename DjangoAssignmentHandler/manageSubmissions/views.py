@@ -11,7 +11,7 @@ from RegistrationModule.models import StudentCourse,Student,Courses
 from django.template.context_processors import csrf
 from manageSubmissions.models import Submission
 
-def uploadFile(request):
+'''def uploadFile(request):
     if request.user.is_authenticated:
         cgitb.enable()
         #Setting stdio set for binary modes in windows
@@ -39,7 +39,7 @@ def uploadFile(request):
 
 #def downloadFile(request):
 #=======
-
+'''
 
 # Create your views here.
 def submissionPage(request):
