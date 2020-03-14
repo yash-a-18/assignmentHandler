@@ -81,3 +81,11 @@ def teacherAssignmentDisplay(request):
         
     else:
         return HttpResponseRedirect('/')
+
+def teacherHomePage(request):
+    if request.user.is_authenticated:
+        c={}
+        c.update(csrf(request))
+        return render(request,'TeacherHomePage.html',c)
+    else:
+        return HttpResponseRedirect('/')
