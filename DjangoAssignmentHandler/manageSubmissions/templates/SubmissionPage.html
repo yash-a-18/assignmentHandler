@@ -3,16 +3,16 @@
         
         <br>
         <center>
-	<form action="/manageSubmissions/addSubmission" method="post" style="background-color:wheat">
+	<form action="/manageSubmissions/addSubmission" method="post" style="background-color:wheat" enctype="multipart/form-data">
 		{% csrf_token %}
 	<div class="form-group row">
     <label for="student_assignment_id" class="col-sm-4 col-form-label">Assignment Id</label>
     <div class="col-sm-6">
       <!--input type="text" class="form-control" id="student_assignment_id"-->
-    	 <select id="student_assignment_id" class="form-control" name="student_assignment_id" required>
+    	 <select id="student_assignment_id" class="form-control" name="student_assignment_id" required value={{ass_id}}>
              <option selected>Choose...</option>
-        <option>1</option>
-		<option>2</option>
+        <!--option>1</option>
+		<option>2</option-->
 		{%for ass in ass_list%}
 			<option>{{ass.assign_id}}</option>
 		{%endfor%}

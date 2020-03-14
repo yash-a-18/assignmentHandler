@@ -4,7 +4,8 @@ from RegistrationModule.models import Student
 from RegistrationModule.models import Teacher
 
 class Assignment(models.Model):
-    assign_id=models.CharField(max_length=10,primary_key=True)
+    #assign_id=models.CharField(max_length=10,primary_key=True)
+    assign_id=models.AutoField(primary_key=True)
     assign_name=models.CharField(max_length=50)
     teacher_email=models.CharField(max_length=50)
     c_id=models.CharField(max_length=10)
@@ -15,5 +16,3 @@ class Assignment(models.Model):
     models.ForeignKey(Teacher,on_delete=models.CASCADE)
     def __str__(self):
         return self.assign_name
-
-

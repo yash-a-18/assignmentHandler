@@ -22,14 +22,26 @@ def login(request):
     message='Well done!'
     c={'message':message}
     c.update(csrf(request))
-<<<<<<< HEAD
-    return render(request,'login(test).html',c,messages.success(request,'Hello User'))
-=======
 
+    #return render(request,'login(test).html',c,messages.success(request,'Hello User'))
     return render(request,'Login.html',c)
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
+
+
+def logout(request):
+    
+    if request.user.is_authenticated:
+        auth.logout(request)
+        message='Successfully logged out!'
+        c={'message':message}
+        c.update(csrf(request))
+
+        #return render(request,'login(test).html',c,messages.success(request,'Hello User'))
+        return render(request,'Login.html',c)
+    else:
+        return HttpResponseRedirect('/')
 
 def putStudentData(request):
+    
     t_first_name=request.POST.get('student_first_name',default=None)
     t_middle_name=request.POST.get('student_middle_name',default=None)
     t_last_name=request.POST.get('student_last_name',default=None)
@@ -66,29 +78,35 @@ def putStudentData(request):
     stu.save()
     user=User(username=t_stu_email,password=t_password )
     user.save()
-<<<<<<< HEAD
-    return render(request,'login(test).html')
+
+    message="Hey there Student!! , you are now successfully registered"
+    c={'message':message}
+    c.update(csrf(request))
+    return render(request ,'Login.html',c)
+#<<<<<<< HEAD
+    #return render(request,'login(test).html')
+
 
 def putTeacherData(request):
     
-    t_first_name=request.POST.get('teacher_first_name',default=none)
-    t_middle_name=request.POST.get('teacher_middle_name',default=none)
-    t_last_name=request.POST.get('teacher_last_name',default=none)
-    t_username=request.POST.get('user_name',default=none)
-    t_password=request.POST.get('teacher_password',default=none)
-    t_dob=request.POST.get('teacher_dob',default=none)
-    t_semester=request.POST.get('teacher_semester',default=none)
-    t_course=request.POST.get('teacher_course',default=none)
-    t_tchr_email=request.POST.get('teacher_email',default=none)
-    t_address=request.POST.get('teacher_address',default=none)
-    t_address2=request.POST.get('teacher_address2',default=none)
-    t_city=request.POST.get('teacher_city',default=none)
-    t_state=request.POST.get('teacher_state',default=none)
-    t_zip_code=request.POST.get('teacher_zip',default=none)
-    t_mobile_no=request.POST.get('teacher_mobile_no',default=none)
-    t_id_no=request.POST.get('teacher_id_no',default=none)
-    t_image=request.POST.get('teacher_image',default=none)
-=======
+    t_first_name=request.POST.get('teacher_first_name',default=None)
+    t_middle_name=request.POST.get('teacher_middle_name',default=None)
+    t_last_name=request.POST.get('teacher_last_name',default=None)
+    t_username=request.POST.get('user_name',default=None)
+    t_password=request.POST.get('teacher_password',default=None)
+    t_dob=request.POST.get('teacher_dob',default=None)
+    t_semester=request.POST.get('teacher_semester',default=None)
+    t_course=request.POST.get('teacher_course',default=None)
+    t_tchr_email=request.POST.get('teacher_email',default=None)
+    t_address=request.POST.get('teacher_address',default=None)
+    t_address2=request.POST.get('teacher_address2',default=None)
+    t_city=request.POST.get('teacher_city',default=None)
+    t_state=request.POST.get('teacher_state',default=None)
+    t_zip_code=request.POST.get('teacher_zip',default=None)
+    t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
+    t_id_no=request.POST.get('teacher_id_no',default=None)
+    t_image=request.POST.get('teacher_image',default=None)
+#=======
     message="Hey there Student!! , you are now successfully registered"
     c={'message':message}
     c.update(csrf(request))
@@ -104,7 +122,7 @@ def putTeacherData(request):
     t_dob=request.POST.get('teacher_dob',default=None)
     t_semester=request.POST.get('teacher_semester',default=None)
     t_course=request.POST.get('teacher_course',default=None)
-    t_stu_email=request.POST.get('teacher_email',default=None)
+    t_tchr_email=request.POST.get('teacher_email',default=None)
     t_address=request.POST.get('teacher_address',default=None)
     t_address2=request.POST.get('teacher_address2',default=None)
     t_city=request.POST.get('teacher_city',default=None)
@@ -113,7 +131,6 @@ def putTeacherData(request):
     t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
     t_id_no=request.POST.get('teacher_id_no',default=None)
     t_image=request.POST.get('teacher_image',default=None)
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
     tchr=Teacher(first_name=t_first_name,
                 middle_name=t_middle_name,
                 last_name=t_last_name,
@@ -133,33 +150,25 @@ def putTeacherData(request):
     tchr.save()
     user=User(username=t_tchr_email,password=t_password )
     user.save()
-<<<<<<< HEAD
-    return render(request,'login(test).html')
-=======
     message="Hey there Teacher!! , you are now successfully registered"
     c={'message':message}
     c.update(csrf(request))
     
     return render(request ,'Login.html',c)
     #return HttpResponseRedirect('Login.html',c)
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
 
 def authentication(request):
     username=request.POST.get('user_name',default=None)
     password=request.POST.get('user_password',default=None)
     User=auth.authenticate(username=username,password=password)
+    print(User)
     if User is not None:
         auth.login(request,User)
         #return HttpResponseRedirect(request,'/manageAssignment/StudentHomePage.html')
         return HttpResponseRedirect('/manageAssignments/StudentHomePage.html')
     else:
-<<<<<<< HEAD
-        return render(request,'login(test).html',messages.error(request, 'Invalid Username/Password..'))
-=======
         #messages.error(request, 'Invalid Username/Password..')
         message='Invalid Username/Password..'
         c={'message':message}
         c.update(csrf(request))
-        
         return render(request,'Login.html',c)
->>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34

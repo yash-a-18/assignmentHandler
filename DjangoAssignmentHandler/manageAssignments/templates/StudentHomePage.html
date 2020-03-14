@@ -24,11 +24,15 @@
       <td>Aastha</td>
       <td>SE</td>
       <td>27/06</td>
-      <td><a href="#">#</a></td>
+      <td><a href="/manageSubmissions/SubmissionPage.html?assign_id={{ass.assign_id}}">Submit</a></td>
 	</tr>
 	{%for ass in ass_list %}
 	<tr>
 		<td>{{ass.assign_id}}</td>
+		<td>{{ass.assign_name}}</td>
+		<td>{{ass.c_id}}</td>
+		<td>{{ass.assign_due_date}}</td>
+		<td><a href="/manageSubmissions/SubmissionPage.html?assign_id={{ass.assign_id}}">Submit</a></td>
 	</tr>
 	{%endfor%}
   </tbody>

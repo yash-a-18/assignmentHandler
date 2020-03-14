@@ -1,0 +1,36 @@
+{% extends 'Student_base.html' %}
+	{% block content %}
+        
+        <table class="table table-striped" style="background-color:bisque">
+  <thead>
+    <tr>
+      <th scope="col">Assignment Id</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Due Date & Time</th>
+      <!--<th scope="col">Submission Link</th>-->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <!--<td>Yash</td>
+      <td>JT</td>
+      <td>06/06</td>
+      <td><a href="#">#</a></td>-->
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <!--<td>Aastha</td>
+      <td>SE</td>
+      <td>27/06</td>
+      <td><a href="#">#</a></td>-->
+	</tr>
+	<!--{%for ass in ass_list %}
+	<tr>
+		<td>{{ass.assign_id}}</td>
+	</tr>
+	{%endfor%}-->
+  </tbody>
+</table>
+    {%endblock%}
