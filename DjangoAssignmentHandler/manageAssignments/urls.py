@@ -8,7 +8,6 @@ urlpatterns=[
     path('createAssignment',views.putAssignmentData,name='putAssignmentData'),
     path('StudentHomePage.html',views.displayStudentAssignmentList,name='student_home'),
     #path('StudentAssignmentDisplay.html',views.studentAssignmentDisplay,name='StudentAssignmentDisplay'),
-    path('TeacherAssignmentDisplay.html',views.teacherAssignmentDisplay,name='TeacherAssignmentDisplay'),
-    
+    path('TeacherAssignmentDisplay.html',views.teacherAssignmentDisplay,name='TeacherAssignmentDisplay')
 ]
 #>>>>>>> b84af62b03b2aaae0d544a8c092c0ab9fb711c34
