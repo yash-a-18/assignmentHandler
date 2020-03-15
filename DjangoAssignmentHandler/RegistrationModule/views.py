@@ -59,7 +59,7 @@ def putStudentData(request):
     t_zip_code=request.POST.get('student_zip',default=None)
     t_mobile_no=request.POST.get('student_mobile_no',default=None)
     t_id_no=request.POST.get('student_id_no',default=None)
-    #t_image=request.FILES('student_image',default=None)
+    t_image=request.FILES['student_image']
     stu=Student(student_first_name=t_first_name,
                 student_middle_name=t_middle_name,
                 student_last_name=t_last_name,
@@ -75,7 +75,7 @@ def putStudentData(request):
                 student_zip=t_zip_code,
                 student_mobile_no=t_mobile_no,
                 student_id_no=t_id_no,
-    #            student_image=t_image
+                student_image=t_image
                 )
     stu.save()
     user=User(username=t_stu_email,password=t_password )
@@ -86,42 +86,8 @@ def putStudentData(request):
     c={'message':message}
     c.update(csrf(request))
     return render(request ,'Login.html',c)
-#<<<<<<< HEAD
-    #return render(request,'login(test).html')
-    def uploadStudentImage(request):
-        if request.method=='POST':
-            t_image=request.FILES('student_image')
-            fs=FileSystemStorage()
-            name=fs.save(t_image.name,t_image)
 
 
-
-'''def putTeacherData(request):
-    
-    t_first_name=request.POST.get('teacher_first_name',default=None)
-    t_middle_name=request.POST.get('teacher_middle_name',default=None)
-    t_last_name=request.POST.get('teacher_last_name',default=None)
-    t_username=request.POST.get('user_name',default=None)
-    t_password=request.POST.get('teacher_password',default=None)
-    t_dob=request.POST.get('teacher_dob',default=None)
-    t_semester=request.POST.get('teacher_semester',default=None)
-    t_course=request.POST.get('teacher_course',default=None)
-    t_tchr_email=request.POST.get('teacher_email',default=None)
-    t_address=request.POST.get('teacher_address',default=None)
-    t_address2=request.POST.get('teacher_address2',default=None)
-    t_city=request.POST.get('teacher_city',default=None)
-    t_state=request.POST.get('teacher_state',default=None)
-    t_zip_code=request.POST.get('teacher_zip',default=None)
-    t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
-    t_id_no=request.POST.get('teacher_id_no',default=None)
-    t_image=request.FILES('teacher_image',default=None)
-#=======
-    message="Hey there Student!! , you are now successfully registered"
-    c={'message':message}
-    c.update(csrf(request))
-    return render(request ,'Login.html',c)
-    #return HttpResponseRedirect('Login.html',c)
-'''
 def putTeacherData(request):
     t_first_name=request.POST.get('teacher_first_name',default=None)
     t_middle_name=request.POST.get('teacher_middle_name',default=None)
