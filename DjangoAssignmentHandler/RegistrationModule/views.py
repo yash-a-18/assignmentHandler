@@ -105,7 +105,7 @@ def putTeacherData(request):
     t_zip_code=request.POST.get('teacher_zip',default=None)
     t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
     t_id_no=request.POST.get('teacher_id_no',default=None)
-    t_image=request.FILES('teacher_image',default=None)
+    t_image=request.FILES['teacher_image']
     tchr=Teacher(first_name=t_first_name,
                 middle_name=t_middle_name,
                 last_name=t_last_name,
