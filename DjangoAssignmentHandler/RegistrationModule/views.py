@@ -92,7 +92,7 @@ def putTeacherData(request):
     t_first_name=request.POST.get('teacher_first_name',default=None)
     t_middle_name=request.POST.get('teacher_middle_name',default=None)
     t_last_name=request.POST.get('teacher_last_name',default=None)
-    t_username=request.POST.get('user_name',default=None)
+    t_username=request.POST.get('teacher_user_name',default=None)
     t_password=request.POST.get('teacher_password',default=None)
     t_dob=request.POST.get('teacher_dob',default=None)
     t_semester=request.POST.get('teacher_semester',default=None)
@@ -106,22 +106,21 @@ def putTeacherData(request):
     t_mobile_no=request.POST.get('teacher_mobile_no',default=None)
     t_id_no=request.POST.get('teacher_id_no',default=None)
     t_image=request.FILES['teacher_image']
-    tchr=Teacher(first_name=t_first_name,
-                middle_name=t_middle_name,
-                last_name=t_last_name,
-                username=t_username,
-                dob=t_dob,
-                semester=t_semester,
-                course=t_course,
+    #print(t_middle_name)
+    tchr=Teacher(teacher_first_name=t_first_name,
+                teacher_middle_name=t_middle_name,
+                teacher_last_name=t_last_name,
+                teacher_username=t_username,
+                teacher_dob=t_dob,
                 teacher_email=t_tchr_email,
-                address=t_address,
-                address2=t_address2,
-                city=t_city,
-                state=t_state,
-                zip_code=t_zip_code,
-                mobile_no=t_mobile_no,
-                id_no=t_id_no,
-                image=t_image)
+                teacher_address=t_address,
+                teacher_address2=t_address2,
+                teacher_city=t_city,
+                teacher_state=t_state,
+                teacher_zip=t_zip_code,
+                teacher_mobile_no=t_mobile_no,
+                teacher_id_no=t_id_no,
+                teacher_image=t_image)
     tchr.save()
     user=User(username=t_tchr_email,password=t_password )
     user.save()
@@ -131,6 +130,15 @@ def putTeacherData(request):
     
     return render(request ,'Login.html',c)
     #return HttpResponseRedirect('Login.html',c)
+
+def studentProfile(request):
+    try:
+        img_url=Student.objects.get(student_email=request.user.username).student_image.url
+    except Student.DoesNotExist:
+        img_url=None
+    c={'image_url':img_url}
+    c.update(csrf(request))
+    return render(request,"StudentProfile.html",c)
 
 def authentication(request):
     username=request.POST.get('user_name',default=None)

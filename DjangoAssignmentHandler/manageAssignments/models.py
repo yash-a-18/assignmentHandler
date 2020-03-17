@@ -7,6 +7,7 @@ class Assignment(models.Model):
     #assign_id=models.CharField(max_length=10,primary_key=True)
     assign_id=models.AutoField(primary_key=True)
     assign_name=models.CharField(max_length=50)
+    assign_file=models.FileField(upload_to='files/',null=True)
     teacher_email=models.CharField(max_length=50)
     c_id=models.CharField(max_length=10)
     initial_date=models.DateTimeField()

@@ -84,3 +84,13 @@ def studentSubmissionDisplay(request):
     else:
         return HttpResponseRedirect('/')
 
+def viewSubmissionFile(request):
+    if request.user.is_authenticated:
+        t_stu_email=request.GET.get("stu_email")
+        t_assign_id=request.GET.get("assign_id")
+        c={}
+        c['file_url']='/media/files/manage.py'#Submission.objects.get(student_email=t_stu_email,assign_id=t_assign_id).submission_file_name.url
+        c.update(csrf(request))
+        return render(request,'ViewSubmissionFile.html',c)
+    else:
+        return HttpResponseRedirect('/')
