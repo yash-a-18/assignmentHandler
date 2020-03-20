@@ -10,6 +10,8 @@ from django.http import HttpResponseRedirect
 from RegistrationModule.models import StudentCourse,Student,Courses
 from django.template.context_processors import csrf
 from manageSubmissions.models import Submission
+from django.views.decorators.clickjacking import xframe_options_exempt
+from django.contrib.auth.decorators import login_required
 
 '''def uploadFile(request):
     if request.user.is_authenticated:
@@ -42,6 +44,7 @@ from manageSubmissions.models import Submission
 '''
 
 # Create your views here.
+#@login_required(login_url='')
 def submissionPage(request):
     #print(request.user.username)
     if request.user.is_authenticated:
@@ -58,7 +61,7 @@ def submissionPage(request):
             home_ass_id=None
             if request.GET.get('assign_id'):
                 home_ass_id=request.GET.get('assign_id')
-                pass
+                #pass
             for course in student_course:
                 all_assign=Assignment.objects.filter(c_id=course.c_id).filter(assign_due_date__gte=datetime.date.today())
                 for temp_ass in all_assign:
@@ -84,13 +87,24 @@ def studentSubmissionDisplay(request):
     else:
         return HttpResponseRedirect('/')
 
+#@xframe_options_exempt
 def viewSubmissionFile(request):
     if request.user.is_authenticated:
-        t_stu_email=request.GET.get("stu_email")
-        t_assign_id=request.GET.get("assign_id")
         c={}
-        c['file_url']='/media/files/manage.py'#Submission.objects.get(student_email=t_stu_email,assign_id=t_assign_id).submission_file_name.url
+        try:
+            t_stu_email=request.GET.get("stu_email")
+            t_assign_id=request.GET.get("assign_id")
+            
+            file_url=Submission.objects.get(student_email=t_stu_email,assign_id=t_assign_id).submission_file_name.url
+            #c['file_url']=file_url
+            file_name=file_url.split('/')
+            file_name.reverse()
+            f = open(os.path.dirname(__file__)+'\\..\\media\\'+file_name[1]+'\\'+file_name[0], 'r')
+            c['file_content']=f.read()
+        except Submission.DoesNotExist:
+            pass
         c.update(csrf(request))
         return render(request,'ViewSubmissionFile.html',c)
+
     else:
         return HttpResponseRedirect('/')
