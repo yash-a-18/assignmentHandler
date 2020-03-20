@@ -8,5 +8,105 @@
     <a href="teacher_reg.html" class="btn btn-primary stretched-link">Sign Up</a>-->
   </div>
   </div>
+  <form action="putTeacherData" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="teacher_first_name" class="col-sm-4 col-form-label">First Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="teacher_first_name" name="teacher_first_name" value="{{tchr.teacher_first_name}}" required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_Middle_name" class="col-sm-4 col-form-label">Middle Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="teacher_Middle_name" name="teacher_Middle_name" value="{{tchr.teacher_middle_name}}" required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_last_name" class="col-sm-4 col-form-label">Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="teacher_last_name"  name="teacher_last_name" value="{{tchr.teacher_last_name}}" required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_dob" class="col-sm-4 col-form-label">Birth Date</label>
+      <div class="col-sm-6">
+        <input type="date" class="form-control" id="teacher_dob" name="teacher_dob" value="{{tchr.teacher_dob}}" required>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="teacher_email" class="col-sm-4 col-form-label">Email</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" id="teacher_email" name="teacher_email" value="{{tchr.teacher_email}}" required>
+      </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_address" class="col-sm-4 col-form-label">Address</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="teacher_address" placeholder="1234 Main St" name="teacher_address" value="{{tchr.teacher_address}}" required>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_address2" class="col-sm-4 col-form-label">Address 2</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="teacher_address2" placeholder="Apartment, studio, or floor" name="teacher_address2" value="{{tchr.teacher_address2}}" required>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+    
+      <div class="form-group col-sm-4">
+        <label for="teacher_city" class="col-md-6 col-form-label">City</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="teacher_city" name="teacher_city" value="{{tchr.teacher_city}}" required>
+      </div>
+    </div>
+    
+      <div class="form-group col-sm-4">
+        <label for="teacher_state" class="col-md-6 col-form-label">State</label>
+      <div class="col-md-6">
+        <input type="text" id="teacher_state" class="form-control" name="teacher_state" value="{{tchr.teacher_state}}" required>
+      </div>
+    </div>
+    
+      <div class="form-group col-sm-4">
+        <label for="teacher_zip" class="col-md-6 col-form-label">Zip</label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="teacher_zip" name="teacher_zip" value="{{tchr.teacher_zip}}" >
+      </div>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_mobile_no" class="col-sm-4 col-form-label">Mobile No.</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="teacher_mobile_no" name="teacher_mobile_no" value="{{tchr.teacher_mobile_no}}" required>
+    </div>
+    </div>
+    
+    <div class="form-group row">
+      <label for="teacher_id_no" class="col-sm-4 col-form-label">Id No.</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="teacher_id_no" name="teacher_id_no" value="{{tchr.teacher_id_no}}" required>
+    </div>
+    </div>
+    <!--
+    <div class="form-group row">
+      <label for="teacher_image" class="col-sm-4 col-form-label">Upload Image</label>
+    <div class="col-sm-6">
+      <input type="file" class="form-control-file" id="teacher_image" name="teacher_image" required>
+    </div>
+    </div>
+    -->
+    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+    
+    </form>
+  
   </center>
 {%endblock%}
