@@ -1,12 +1,139 @@
 {% extends 'Student_base.html' %}
 {%block content%}
 	<center><div class="card" style="width: 18rem;">
-  <img src="{{image_url}}" class="card-img-top" alt="Image not found">
+  <img src="{%image_url%}" class="card-img-top" alt="Your Image">
   <div class="card-body">
     <!--<h5 class="card-title">For Teachers</h5>
     <p class="card-text">Click on the button below for Sign In....<strong>Only for Teachers</strong></p>
     <a href="teacher_reg.html" class="btn btn-primary stretched-link">Sign Up</a>-->
   </div>
   </div>
+  <form action="putStudentData" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+	<div class="form-group row">
+    <label for="student_first_name" class="col-sm-4 col-form-label">First Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_first_name" name="student_first_name" value="{{stu.student_first_name}}" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_middle_name" class="col-sm-4 col-form-label">Middle Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_middle_name" name="student_middle_name" value="{{stu.student_middle_name}}" required>
+    </div>
+  </div>
+	
+	<div class="form-group row">
+    <label for="student_last_name" class="col-sm-4 col-form-label">Last Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="student_last_name" name="student_last_name" value="{{stu.student_last_name}}" required>
+    </div>
+  </div>
+	
+  <div class="form-group row">
+    <label for="inputUserName" class="col-sm-4 col-form-label">User Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="inputUserName" name="student_user_name" value="{{stu.student_user_name}}" required>
+    </div>
+  </div>
+
+	<div class="form-group row">
+    <label for="student_dob" class="col-sm-4 col-form-label">Birth Date</label>
+    <div class="col-sm-6">
+      <input type="date" class="form-control" id="student_dob" name="student_dob" value="{{stu.student_dob}}" required>
+    </div>
+  </div>
+
+	
+	<div class="form-group row">
+    <label for="student_semester" class="col-sm-4 col-form-label">Semester</label>
+    <div class="col-sm-6">
+      <!--input type="text" class="form-control" id="inputSemester"-->
+    	 <select id="student_semester" class="form-control" name="student_semester" value="{{stu.student_semester}}" required>
+        <option selected>Choose...</option>
+        <option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+		<option>5</option>
+		<option>6</option>
+		<option>7</option>
+		<option>8</option>
+      </select>
+	</div>
+  </div>
+	
+  <div class="form-group row">
+    <label for="student_email" class="col-sm-4 col-form-label">Email</label>
+    <div class="col-sm-6">
+      <input type="email" class="form-control" id="student_email" name="student_email" value="{{stu.student_email}}" required>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_address" class="col-sm-4 col-form-label">Address</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_address" placeholder="1234 Main St" name="student_address" value="{{stu.student_address}}" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_address2" class="col-sm-4 col-form-label">Address 2</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_address2" placeholder="Apartment, studio, or floor" name="student_address2" value="{{stu.student_address2}}" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+  
+    <div class="form-group col-sm-4">
+      <label for="student_city" class="col-md-6 col-form-label">City</label>
+	  <div class="col-md-6">
+      <input type="text" class="form-control" id="student_city" name="student_city" value="{{stu.student_city}}" required>
+    </div>
+	</div>
+	
+    <div class="form-group col-sm-4">
+      <label for="student_state" class="col-md-6 col-form-label">State</label>
+	  <div class="col-md-6">
+      <input type="text" id="student_state" class="form-control" name="student_state" value="{{stu.student_state}}" required>
+    </div>
+	</div>
+	
+    <div class="form-group col-sm-4">
+      <label for="student_zip" class="col-md-6 col-form-label">Zip</label>
+	  <div class="col-md-6">
+      <input type="text" class="form-control" id="student_zip" name="student_zip" value="{{stu.student_zip}}">
+    </div>
+	</div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_mobile_no" class="col-sm-4 col-form-label">Mobile No.</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_mobile_no" name="student_mobile_no" value="{{stu.student_mobile_no}}" required>
+  </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="student_id_no" class="col-sm-4 col-form-label">Id No.</label>
+	<div class="col-sm-6">
+    <input type="text" class="form-control" id="student_id_no" name="student_id_no" value="{{stu.student_id_no}}" required>
+  </div>
+  </div>
+  
+  <!--<div class="form-group row">
+    <label for="student_image" class="col-sm-4 col-form-label">Upload Image</label>
+	<div class="col-sm-6">
+    <input type="file" class="form-control-file" id="student_image" name="student_image" required>
+  </div>
+  </div>-->
+  
+  <!--button type="submit" class="btn btn-primary">Submit<button-->
+  
+  </form>
   </center>
 {%endblock%}
+
+
