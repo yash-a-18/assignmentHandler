@@ -133,10 +133,15 @@ def putTeacherData(request):
 
 def studentProfile(request):
     try:
-        img_url=Student.objects.get(student_email=request.user.username).student_image.url
+        stu=Student.objects.get(student_email=request.user.username)
+        img_url=stu.student_image.url
+
     except Student.DoesNotExist:
+        stu=None
         img_url=None
+    
     c={'image_url':img_url}
+    c['stu']=stu
     c.update(csrf(request))
     return render(request,"StudentProfile.html",c)
 

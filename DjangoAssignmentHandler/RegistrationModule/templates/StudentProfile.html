@@ -1,7 +1,7 @@
 {% extends 'Student_base.html' %}
 {%block content%}
 	<center><div class="card" style="width: 18rem;">
-  <img src="{%image_url%}" class="card-img-top" alt="Your Image">
+  <img src="{{image_url}}" class="card-img-top" alt="Your Image">
   <div class="card-body">
     <!--<h5 class="card-title">For Teachers</h5>
     <p class="card-text">Click on the button below for Sign In....<strong>Only for Teachers</strong></p>
@@ -34,14 +34,14 @@
   <div class="form-group row">
     <label for="inputUserName" class="col-sm-4 col-form-label">User Name</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="inputUserName" name="student_user_name" value="{{stu.student_user_name}}" required>
+      <input type="text" class="form-control" id="inputUserName" name="student_user_name" value="{{stu.student_username}}" required>
     </div>
   </div>
 
 	<div class="form-group row">
     <label for="student_dob" class="col-sm-4 col-form-label">Birth Date</label>
     <div class="col-sm-6">
-      <input type="date" class="form-control" id="student_dob" name="student_dob" value="{{stu.student_dob}}" required>
+      <input type="text" class="form-control" id="student_dob" name="student_dob" value="{{stu.student_dob}}" required>
     </div>
   </div>
 
@@ -50,8 +50,8 @@
     <label for="student_semester" class="col-sm-4 col-form-label">Semester</label>
     <div class="col-sm-6">
       <!--input type="text" class="form-control" id="inputSemester"-->
-    	 <select id="student_semester" class="form-control" name="student_semester" value="{{stu.student_semester}}" required>
-        <option selected>Choose...</option>
+    	 <input type="text" id="student_semester" class="form-control" name="student_semester" value="{{stu.student_semester}}" required/>
+        <!--option selected>Choose...</option>
         <option>1</option>
 		<option>2</option>
 		<option>3</option>
@@ -60,7 +60,7 @@
 		<option>6</option>
 		<option>7</option>
 		<option>8</option>
-      </select>
+      </select-->
 	</div>
   </div>
 	
