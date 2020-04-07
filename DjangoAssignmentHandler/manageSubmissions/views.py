@@ -43,6 +43,27 @@ from django.contrib.auth.decorators import login_required
 #=======
 '''
 
+def addSubmission(request):
+    if request.user.is_authenticated:
+        if True:
+            #Creates a new file on the web server of the same name and writes the data of the file to the newly created file on the server
+            '''
+            fn=os.path.basename(filename.student_file)
+            open(fn,'wb').write(filename.file.read(250000))     #assuminng max file size to 250kb
+            '''
+            t_assign_id=request.POST.get('student_assignment_id')
+            t_student_email=request.POST.get('student_submission_email')
+            t_submission_date=datetime.datetime.now()
+            t_submission_file_name=request.FILES['student_file']
+            sub=Submission(assign_id=t_assign_id,student_email=t_student_email,submission_date=t_submission_date,submission_file_name=t_submission_file_name)
+            sub.save()
+            mssg="The file is uploaded successfully!!"
+        else:
+            mssg="No file uploaded"
+        return render(request,'SubmissionPage.html',messages.success(request,mssg))
+    else:
+        return HttpResponseRedirect('/',{'message':'Please Login'})    
+
 # Create your views here.
 #@login_required(login_url='')
 def submissionPage(request):
@@ -60,8 +81,8 @@ def submissionPage(request):
             ass_id_list=[]
             home_ass_id=None
             if request.GET.get('assign_id'):
-                home_ass_id=request.GET.get('assign_id')
-                #pass
+                home_ass_id=int(request.GET.get('assign_id'))
+                
             for course in student_course:
                 all_assign=Assignment.objects.filter(c_id=course.c_id).filter(assign_due_date__gte=datetime.date.today())
                 for temp_ass in all_assign:
@@ -83,7 +104,26 @@ def addSubmission(request):
 '''
 def studentSubmissionDisplay(request):
     if request.user.is_authenticated:
-        return render(request,'StudentSubmissionDisplay.html')
+        c={}
+        #teacher_email=request.user.username
+        course_list=StudentCourse.objects.filter(student_email=request.user.username)
+        c['course_list']=course_list
+        
+        if request.method =="POST" and request.POST.get("student_course_name")!="Choose...":
+            c['course_option']=request.POST.get("student_course_name")
+
+            t_course_id=request.POST.get("student_course_id")
+            #c['course_option']=t_course_id
+            sub_list=Submission.objects.filter(student_email=request.user.username)#.filter(c_id=t_course_id)
+            updated_sub_list=[]
+            for sub in sub_list:
+                if sub.submission_marks_uniqueness!=None:
+                    updated_sub_list.append(sub)
+            #c['sub_list']=updated_sub_list
+            c['sub_list']=sub_list
+            
+        c.update(csrf(request))
+        return render(request,'StudentSubmissionDisplay.html',c)
     else:
         return HttpResponseRedirect('/')
 
@@ -108,3 +148,43 @@ def viewSubmissionFile(request):
 
     else:
         return HttpResponseRedirect('/')
+
+
+def teacherSubmissionDisplay(request):
+    #list of assignments created by the logged in teacher
+    if request.user.is_authenticated:
+        c={}
+        #teacher_email=request.user.username
+        course_list=Courses.objects.all()
+        c['course_list']=course_list
+        if request.method =="POST" and request.POST.get("teacher_course_name")!="Choose...":
+            #c['course_option']=request.POST.get("teacher_course_name")
+
+            t_course_id=request.POST.get("teacher_course_id")
+            c['course_option']=t_course_id
+            print(t_course_id)
+            print(request.user.username)
+            ass_list=Assignment.objects.filter(c_id=t_course_id).filter(teacher_email=request.user.username)
+            c['ass_list']=ass_list
+            
+            if request.POST.get("teacher_assignment_id") != None and request.POST.get("teacher_assignment_id")!="Choose...":
+                print(request.POST.get("teacher_assignment_id"))
+                c['assign_option']=int(request.POST.get("teacher_assignment_id")) ##beware of the data types
+                '''print("{}=={}".format(type(ass_list[0].assign_id),type(request.POST.get("teacher_assignment_id"))))'''
+                sub_list=Submission.objects.filter(assign_id=request.POST.get("teacher_assignment_id"))
+                #sub_list.reverse()
+                sub_list_notsubmitted=[]
+                for sub in sub_list:
+                    if(sub.submission_marks_logic==None):
+                        sub_list_notsubmitted.append(sub)
+                c['sub_list_notsubmitted']=sub_list_notsubmitted
+
+        c.update(csrf(request))
+        return render(request,"TeacherSubmissionDisplay.html",c)            
+    else:
+        return HttpResponseRedirect('/')
+
+
+def setSubmissionMarks(request):
+    sub=Submission()
+    return render(request,"/manageSubmission/TeacherSubmissionDisplay.html")

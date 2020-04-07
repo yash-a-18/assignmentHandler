@@ -1,18 +1,23 @@
 {% extends 'Student_base.html' %}
         {%block content%}
         <center>
-          <form action="/manageSubmissions/addSubmission" method="post" style="background-color:wheat">
+          <form action="/manageSubmissions/addSubmission" method="post" enctype="multipart/form-data" style="background-color:wheat">
             {% csrf_token %}
           <div class="form-group row">
             <label for="student_assignment_id" class="col-sm-4 col-form-label">Assignment Id</label>
             <div class="col-sm-6">
               <!--input type="text" class="form-control" id="student_assignment_id"-->
                <select id="student_assignment_id" class="form-control" name="student_assignment_id" required>
-                     <option selected>Choose...</option>
+                     <option >Choose...</option>
                 <!--option>1</option>
             <option>2</option-->
             {%for ass in ass_list%}
-              <option>{{ass.assign_id}}</option>
+              {%if ass.assign_id == ass_id %}
+                <option value={{ass.assign_id}} selected>{{ass.assign_id}}</option>
+              {%else%}
+                <option value={{ass.assign_id}} >{{ass.assign_id}}</option>
+              {%endif%}
+              
             {%endfor%}
               </select>
           </div>

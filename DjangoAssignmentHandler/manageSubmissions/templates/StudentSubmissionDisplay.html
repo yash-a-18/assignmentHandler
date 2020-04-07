@@ -1,16 +1,29 @@
 {% extends 'Student_base.html' %}
 	{% block content %}
+    
     <br>
+    <form action="/manageSubmissions/StudentSubmissionDisplay.html" method="post" style="background-color:wheat">
+      {% csrf_token %}
     <div class="row">
     <label for="student_course" class="col-sm-4 col-form-label">Course</label>
     <div class="col-sm-6">
-      <select id="student_course_name" class="form-control" name="student_course_name" required>
-            <option selected>Choose...</option>
-        <option>1</option>
-    <option>2</option>
+      <select id="student_course_name" class="form-control" name="student_course_name" required onchange="this.form.submit()">
+        <option >Choose...</option>
+        <option>static1</option>
+        {%for c in course_list %}
+             {%if c.c_id == course_option %} 
+              <option value={{c.c_id}} selected>{{c.c_id}}</option>
+            {%else%}
+            
+            <option value={{c.c_id}}>{{c.c_id}}</option>
+            
+            {%endif%}
+            
+          {%endfor%}
       </select>
   </div>
   </div><br>
+    </form>
 
   
 
@@ -18,7 +31,7 @@
   <thead>
     <tr>
       <th scope="col">Assignment Id</th>
-      <th scope="col">Student Name</th>
+      <!--th scope="col">Student Name</th-->
       <th scope="col">Course Name</th>
       <th scope="col">Due Date & Time</th>
       <!--<th scope="col">Submission Link</th>-->
@@ -39,11 +52,11 @@
       <td>27/06</td>
       <td><a href="#">#</a></td>-->
 	</tr>
-	<!--{%for ass in ass_list %}
+	{%for sub in sub_list %}
 	<tr>
-		<td>{{ass.assign_id}}</td>
+		<td>{{sub.assign_id}}</td>
 	</tr>
-	{%endfor%}-->
+	{%endfor%}
   </tbody>
 </table>
     {%endblock%}
