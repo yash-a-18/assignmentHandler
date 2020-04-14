@@ -82,22 +82,21 @@
   </div>
 	
 	<div class="form-group row">
-    <label for="student_course" class="col-sm-4 col-form-label">Course</label>
+    <label for="student_courses" class="col-sm-4 col-form-label">Course</label>
     <div class="col-auto">
       <!--<input type="text" class="form-control" id="student_course" name="student_course" required>-->
 	  
-	  <div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="course1" value="course1" name="course1">
-  <label class="form-check-label" for="course1">course1</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="course2" value="course2" name="course2">
-  <label class="form-check-label" for="course2">course2</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" id="course3" value="course3" name="course3">
-  <label class="form-check-label" for="course3">course3</label>
-</div>
+	  <!--div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="student_course_list[]" value="static course1" name="student_course_list[]">
+      <label class="form-check-label" for="course1">staticcourse1</label>
+    </div-->
+    {%for course in course_list %}
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="student_course_list[]" value="{{course.c_id}}" name="student_course_list[]">
+        <label class="form-check-label" for="{{course.c_id}}">{{course.c_name}}</label>
+      </div>
+    {%endfor%}
+    
 	  
     </div>
   </div>

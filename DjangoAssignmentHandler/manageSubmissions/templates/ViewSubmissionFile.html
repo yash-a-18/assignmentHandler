@@ -3,7 +3,7 @@
 {%block content%}
 
 <br>
-<p><strong>Name of the File</strong></p><br>
+<p><strong>{{file_name}}</strong></p><br>
 <div id="list">
   <p><!--iframe src="{{file_url}}" frameborder="1" height="400"
       width="80%"></iframe-->
@@ -17,7 +17,9 @@
 <br>
         <center>
 	<form action="/manageSubmissions/SetSubmissionMarks" method="post" style="background-color:wheat">
-		{% csrf_token %}
+    {% csrf_token %}
+    <input type="hidden" name='student_email' id='student_email' value="{{stu_email}}">
+    <input type="hidden" name='assign_id' id='assign_id' value="{{assign_id}}">
 	<div class="form-group row">
     <label for="submission_marks_logic" class="col-sm-4 col-form-label">Logic</label>
     <div class="col-sm-6">
@@ -36,7 +38,7 @@
       <input type="text" class="form-control" id="submission_marks_quality" name="submission_marks_quality">
 	</div>
   </div>
-	
+	#can add a field for comments by teacher on submitted work
 <button type="submit" class="btn btn-primary" style="background-color:saddlebrown">Submit</button>
   
   </form>

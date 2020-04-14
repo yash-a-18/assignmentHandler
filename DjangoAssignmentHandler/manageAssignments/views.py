@@ -83,10 +83,11 @@ def teacherHomePage(request):
         return render(request,'TeacherHomePage.html',c)
     else:
         return HttpResponseRedirect('/')
-
+'''
 def teacherAssignmentList(request):
     if request.user.is_authenticated:
         c={}
         
     else:
         return HttpResponseRedirect('/')
+        '''

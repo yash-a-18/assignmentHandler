@@ -6,7 +6,7 @@ from django.template.context_processors import csrf
 from django.views.generic import TemplateView 
 from django.contrib.auth.models import User
 from django.contrib import messages
-from RegistrationModule.models import Teacher, Student
+from RegistrationModule.models import Teacher, Student ,StudentCourse ,Courses
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def signInUser(request):
@@ -16,11 +16,15 @@ def teacherReg(request):
     return render(request, 'teacher_reg.html')
 
 def studentReg(request):
-    return render(request, 'student_reg.html')
+    c={}
+    course_list=Courses.objects.all()
+    c['course_list']=course_list
+    c.update(csrf(request))
+    return render(request, 'student_reg.html',c)
 
 def login(request):
     
-    message='Well done!'
+    message='Wellcome!'
     c={'message':message}
     c.update(csrf(request))
 
@@ -50,7 +54,7 @@ def putStudentData(request):
     t_password=request.POST.get('student_password',default=None)
     t_dob=request.POST.get('student_dob',default=None)
     t_semester=request.POST.get('student_semester',default=None)
-    t_course=request.POST.get('student_course',default=None)
+    t_course_list=request.POST.getlist('student_course_list[]',default=None)
     t_stu_email=request.POST.get('student_email',default=None)
     t_address=request.POST.get('student_address',default=None)
     t_address2=request.POST.get('student_address2',default=None)
@@ -77,11 +81,13 @@ def putStudentData(request):
                 student_id_no=t_id_no,
                 student_image=t_image
                 )
-    stu.save()
+    #stu.save()
     user=User(username=t_stu_email,password=t_password )
-    user.save()
-    
+    #user.save()
 
+    for c in t_course_list:
+        sc=StudentCourse(student_email=t_stu_email,c_id=c)
+    
     message="Hey there Student!! , you are now successfully registered"
     c={'message':message}
     c.update(csrf(request))
@@ -145,6 +151,21 @@ def studentProfile(request):
     c.update(csrf(request))
     return render(request,"StudentProfile.html",c)
 
+def teacherProfile(request):
+    try:
+        tchr=Teacher.objects.get(teacher_email=request.user.username)
+        img_url=tchr.teacher_image.url
+
+    except Teacher.DoesNotExist:
+        tchr=None
+        img_url=None
+    
+    c={'image_url':img_url}
+    c['tchr']=tchr
+    c.update(csrf(request))
+    return render(request,"TeacherProfile.html",c)
+
+
 def authentication(request):
     username=request.POST.get('user_name',default=None)
     password=request.POST.get('user_password',default=None)
@@ -165,3 +186,15 @@ def authentication(request):
         c={'message':message}
         c.update(csrf(request))
         return render(request,'Login.html',c)
+
+def teacherCourseDisplay(request):
+    if request.user.is_authenticated:
+       
+        c={}
+        course_list=Courses.objects.all()#filter(c_credit__gt=0)
+        c['course_list']=course_list
+        c.update(csrf(request))
+        return render(request,"TeacherCourseDisplay.html",c)  
+       
+    else:
+        return HttpResponseRedirect('/')

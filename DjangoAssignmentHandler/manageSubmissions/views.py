@@ -139,10 +139,14 @@ def viewSubmissionFile(request):
             #c['file_url']=file_url
             file_name=file_url.split('/')
             file_name.reverse()
+            c['file_name']=file_name[0]
             f = open(os.path.dirname(__file__)+'\\..\\media\\'+file_name[1]+'\\'+file_name[0], 'r')
+            
             c['file_content']=f.read()
+            c['stu_email']=t_stu_email
+            c['assign_id']=t_assign_id
         except Submission.DoesNotExist:
-            pass
+            print("MyError: At manageSubmissioin.views.viewSubmissionFile() try block ")
         c.update(csrf(request))
         return render(request,'ViewSubmissionFile.html',c)
 
@@ -162,22 +166,22 @@ def teacherSubmissionDisplay(request):
 
             t_course_id=request.POST.get("teacher_course_id")
             c['course_option']=t_course_id
-            print(t_course_id)
-            print(request.user.username)
+            #print(t_course_id)
+            #print(request.user.username)
             ass_list=Assignment.objects.filter(c_id=t_course_id).filter(teacher_email=request.user.username)
             c['ass_list']=ass_list
             
             if request.POST.get("teacher_assignment_id") != None and request.POST.get("teacher_assignment_id")!="Choose...":
-                print(request.POST.get("teacher_assignment_id"))
+                #print(request.POST.get("teacher_assignment_id"))
                 c['assign_option']=int(request.POST.get("teacher_assignment_id")) ##beware of the data types
                 '''print("{}=={}".format(type(ass_list[0].assign_id),type(request.POST.get("teacher_assignment_id"))))'''
-                sub_list=Submission.objects.filter(assign_id=request.POST.get("teacher_assignment_id"))
+                sub_list=Submission.objects.filter(assign_id=int(request.POST.get("teacher_assignment_id")))
                 #sub_list.reverse()
-                sub_list_notsubmitted=[]
+                sub_list_unmarked=[]
                 for sub in sub_list:
                     if(sub.submission_marks_logic==None):
-                        sub_list_notsubmitted.append(sub)
-                c['sub_list_notsubmitted']=sub_list_notsubmitted
+                        sub_list_unmarked.append(sub)
+                c['sub_list_unmarked']=sub_list_unmarked
 
         c.update(csrf(request))
         return render(request,"TeacherSubmissionDisplay.html",c)            
@@ -186,5 +190,21 @@ def teacherSubmissionDisplay(request):
 
 
 def setSubmissionMarks(request):
-    sub=Submission()
-    return render(request,"/manageSubmission/TeacherSubmissionDisplay.html")
+    
+    t_stu_email=request.POST.get('student_email')
+    t_assign_id=request.POST.get('assign_id')
+    t_mk_l=request.POST.get('submission_marks_logic')
+    t_mk_u=request.POST.get('submission_marks_uniqueness')
+    t_mk_q=request.POST.get('submission_marks_quality')
+    try:
+        sub=Submission.objects.get(student_email=t_stu_email,assign_id=t_assign_id)
+        sub.submission_marks_logic=t_mk_l
+        sub.submission_marks_uniqueness=t_mk_u
+        sub.submission_marks_quality=t_mk_q
+        sub.save()
+    except Submission.DoesNotExist:
+        print('Error at manageSubmission.setSubmission():submission not found')
+        print(t_assign_id)
+        print(t_stu_email)
+        
+    return HttpResponseRedirect("TeacherSubmissionDisplay.html")
