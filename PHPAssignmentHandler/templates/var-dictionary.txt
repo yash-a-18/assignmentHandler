@@ -1,0 +1,54 @@
+Login.html
+	user_name	:	"User Name from login page."
+	user_password	:	"User Password from login page."
+----------------------------------------------------------------------------------------------------------------------
+Teacher_reg.html
+	teacher_first_name	:	"First name of the Teacher."
+	teacher_Middle_name	:	"Middle name of the Teacher."
+	teacher_last_name	:	"Last name of the Teacher."
+	teacher_dob		:	"Date of Birth of the Teacher."
+	teacher_gender		:	"Gender of the Teacher."
+	teacher_email		:	"Email address of the Teacher."
+	teacher_address		:	"Address of the Teacher i.e. Main street."
+	teacher_address2	:	"Address of the Teacher i.e. Appartment,studio,floor,etc."
+	teacher_city		:	"City of the Teacher."
+	teacher_state		:	"State of the Teacher."
+	teacher_zip		:	"Zip code of the Teacher i.e. Pincode."
+	teacher_mobile_no	:	"Mobile number of the Teacher."
+	teacher_id_no		:	"Unique Id of the Teacher."
+	teacher_image		:	"Image of the Teacher."
+----------------------------------------------------------------------------------------------------------------------
+Student_reg.html
+	student_first_name	:	"First name of the Student."
+	student_middle_name	:	"Middle name of the Student."
+	student_last_name	:	"Last name of the Student."
+	student_dob		:	"Date of Birth of the Student."
+	student_gender		:	"Gender of the Student."
+	student_semester	:	"Current Semester of the Student."
+	student_course		:	"Course selected by the Student."
+	student_email		:	"Email address of the Student."
+	student_address		:	"Address of the Student i.e. Main street."
+	student_address2	:	"Address of the Student i.e. Appartment,studio,floor,etc."
+	student_city		:	"City of the Student."
+	student_state		:	"State of the Student."
+	student_zip		:	"Zip code of the Student i.e. Pincode."
+	student_mobile_no	:	"Mobile number of the Student."
+	student_id_no		:	"Unique Id of the Student."
+	student_image		:	"Image of the Student."
+----------------------------------------------------------------------------------------------------------------------
+AssignmentPage.html
+	assignment_id			:	"Unique Assignment's Id provided by Teacher."
+	assignment_name			:	"Name of the Assignment given by Teacher."
+	teacher_assignment_email	:	"Teacher's email address."
+	course_assignment_id		:	"Course Id."
+	assignment_initial_date		:	"Starting Date for the assignment."
+	assignment_due_date		:	"Due date for the aasignment i.e. last submission date."
+	assignment_max_upload_size	:	"Maximum Size of the assignment to be uploaded."
+-----------------------------------------------------------------------------------------------------------------------
+SubmissionPage.html
+	student_assignment_id		:	"Assignment Id by the student for which assignment is been submitted."
+	student_submission_email	:	"Student email address."
+	student_file			:	"File submitted by the student for particular assignment."
+-----------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------
