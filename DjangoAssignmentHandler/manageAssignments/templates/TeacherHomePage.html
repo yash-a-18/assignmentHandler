@@ -1,42 +1,42 @@
-{%extends '#Teacher_base.html'%}
+{%extends 'Teacher_base.html'%}
 {%block content%}
 
 <table class="table table-striped" style="background-color:bisque">
     <thead>
       <tr>
         <th scope="col">Assignment Name</th>
+        <th scope="col">Assignment Id</th>
         <th scope="col">Course Id</th>
-        <th scope="col">Teacher's Email</th>
-        <th scope="col">Course</th>
-        <th scope="col">Initial Date</th>
+        
         <th scope="col">Due Date</th>
         <th scope="col">Maximum Size</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <!--tr>
         <th scope="row">1</th>
-        <!--td>Yash</td>
+        <td>Yash</td>
         <td>JT</td>
         <td>06/06</td>
-        <td><a href="#">#</a></td>-->
-      </tr>
-      <tr>
+        <td><a href="#">#</a></td>>
+      </tr-->
+      <!--tr>
         <th scope="row">2</th>
-        <!--td>Aastha</td>
+        <td>Aastha</td>
         <td>SE</td>
         <td>27/06</td>
-        <td><a href="/manageSubmissions/SubmissionPage.html?assign_id={{ass.assign_id}}">Submit</a></td>-->
-      </tr>
-      <!--{%for ass in ass_list %}-->
+        <td><a href="/manageSubmissions/SubmissionPage.html?assign_id={{ass.assign_id}}">Submit</a></td>>
+      </tr-->
+      {%for ass in ass_list %}
       <tr>
-          <!--td>{{ass.assign_id}}</td>
+          
           <td>{{ass.assign_name}}</td>
+          <td>{{ass.assign_id}}</td>
           <td>{{ass.c_id}}</td>
           <td>{{ass.assign_due_date}}</td>
-          <td><a href="/manageSubmissions/SubmissionPage.html?assign_id={{ass.assign_id}}">Submit</a></td>-->
+          <td>{{ass.assign_max_size_kb}}</a></td>
       </tr>
-      <!--{%endfor%}-->
+      {%endfor%}
     </tbody>
   </table>
 

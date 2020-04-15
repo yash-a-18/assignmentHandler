@@ -1,0 +1,69 @@
+{% extends 'Teacher_base.html' %}
+	{% block content %}
+        
+  <table class="table table-striped" style="background-color:bisque">
+  <thead>
+    <tr>
+      <th scope="col">Course Id</th>
+      
+      <th scope="col">Course</th>
+      <th scope="col">Credit</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1.</th>
+      <td>staticCourse</td>
+      
+      <td>5</td>
+      <td>
+          <a class="btn btn-outline-primary" href="/Register/RemoveCourse?c_id=1" role="button">
+            Remove
+          </a>
+            <!--a href="#">#</a-->
+        </td>
+    </tr>
+    <tr>
+      <th scope="row">2.</th>
+      <td>staticCourse2</td>
+      
+      <td>6</td>
+      <td><a href="/Register/RemoveCourse?c_id=2">Submit</a></td>
+	</tr>
+	{%for course in course_list %}
+	<tr>
+		<td>{{course.c_id}}</td>
+		<td>{{course.c_name}}</td>
+		
+		<td>{{course.credit}}</td>
+		<td><a class="btn btn-outline-primary" href="/Register/RemoveCourse?c_id={{course.c_id}}" role="button">Remove</a></td>
+	</tr>
+    {%endfor%}
+    <tr>
+        <td>
+            Add Course
+        </td>
+    </tr>
+    <tr>
+        <form action="/Register/AddCourse" method="POST" >
+            {{csrftoken}}
+            <td>
+                <input type="text" id="c_id" name="c_id" required placeholder="Id" title="Course id, can be string of length 10">        
+            </td>
+            <td>
+                <input type="text" name="c_name" id="c_name" required placeholder="Name" title="Name of the course">
+            </td>
+            <td>
+                <input type="text" name="c_credit" id="c_credit" required placeholder="Credit" title="Credit can be floating between from 0 to 10">
+            </td>
+            <td>
+                <input type="submit" value="Add">
+            </td>
+        </form>
+        
+    </tr>
+  </tbody>
+</table>
+
+    {%endblock%}

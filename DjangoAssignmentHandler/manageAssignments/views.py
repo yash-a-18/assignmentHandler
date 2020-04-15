@@ -11,7 +11,10 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 def AssignmentPage(request):
     if request.user.is_authenticated:
-        return render(request,'AssignmentPage.html')
+        c={}
+        c["teacher_email"]=request.user.username
+        c.update(csrf(request))
+        return render(request,'AssignmentPage.html',c)
     else:
         return HttpResponseRedirect('/')
 
@@ -22,16 +25,22 @@ def putAssignmentData(request):
         t_assign_name=request.POST.get('assign_name',default=None)
         t_teacher_email=request.POST.get('teacher_email',default=False)
         t_c_id=request.POST.get('c_id',default=None)
-        t_initial_date=request.POST.get('initial_date',default=None)
+        
+        if request.POST.get('initial_date',default=None) ==None:
+            t_initial_date=datetime.date.today()#auto init date
+        else:
+            t_initial_date=request.POST.get('initial_date',default=None)
         t_assign_due_date=request.POST.get('assign_due_date',default=None)
         t_assign_max_size_kb=request.POST.get('assign_max_size_kb',default=None)
+        t_assign_file=request.FILES['assignment_file']
         assign=Assignment(#assign_id=t_assign_id,
                         assign_name=t_assign_name,
                         teacher_email=t_teacher_email,
                         c_id=t_c_id,
                         initial_date=t_initial_date,
                         assign_due_date=t_assign_due_date,
-                        assign_max_size_kb=t_assign_max_size_kb                  
+                        assign_max_size_kb=t_assign_max_size_kb,
+                        assign_file=t_assign_file                  
                         )
         assign.save()
         return render(request,'AssignmentPage.html',messages.success(request,'Assignment added successfully!!!'))
@@ -65,27 +74,20 @@ def displayStudentAssignmentList(request):
 
     
 
-def teacherAssignmentDisplay(request):
-    #list of assignments created by the logged in teacher
-    if request.user.is_authenticated:
-        if request.method =="POST":
-            course_id=Courses.object.get(c_name=request.POST.get("teacher_course_name"))
-            ass_list=Assignment.objects.filter(teacher_email=request.user.username)
-            ass_list.reverse()
-            c={'ass_list':ass_list}
-            c.update(csrf(request))
-            return render(request,"TeacherAssignmentDisplay.html",c)    
-        c={}
-        c.update(csrf(request))
-        return render(request,"TeacherAssignmentDisplay.html",c)    
-        
-    else:
-        return HttpResponseRedirect('/')
-
 def teacherHomePage(request):
     if request.user.is_authenticated:
         c={}
+        ass_list=Assignment.objects.filter(teacher_email=request.user.username)
+        c['ass_list']=ass_list
         c.update(csrf(request))
         return render(request,'TeacherHomePage.html',c)
     else:
         return HttpResponseRedirect('/')
+'''
+def teacherAssignmentList(request):
+    if request.user.is_authenticated:
+        c={}
+        
+    else:
+        return HttpResponseRedirect('/')
+        '''
