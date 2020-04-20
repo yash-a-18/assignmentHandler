@@ -114,7 +114,14 @@ def studentSubmissionDisplay(request):
 
             t_course_id=request.POST.get("student_course_id")
             #c['course_option']=t_course_id
-            sub_list=Submission.objects.filter(student_email=request.user.username)#.filter(c_id=t_course_id)
+            ass_list=Assignment.objects.filter(c_id=t_course_id)
+            ass_id_list=[a.ass_id for a in ass_list]
+            t_sub_list=Submission.objects.filter(student_email=request.user.username)
+            sub_list=[]
+            #sub_list=[s for s in t_sub_list and s.ass_id in ass_id_list]
+            for s in t_sub_list:
+                if s.assign_id in ass_id_list:
+                    sub_list.append(s)
             updated_sub_list=[]
             for sub in sub_list:
                 if sub.submission_marks_uniqueness!=None:
@@ -161,21 +168,21 @@ def teacherSubmissionDisplay(request):
         #teacher_email=request.user.username
         course_list=Courses.objects.all()
         c['course_list']=course_list
-        if request.method =="POST" and request.POST.get("teacher_course_name")!="Choose...":
-            #c['course_option']=request.POST.get("teacher_course_name")
+        if request.method =="GET" and request.GET.get("teacher_course_id")!="Choose...":
+            #c['course_option']=request.GET.get("teacher_course_name")
 
-            t_course_id=request.POST.get("teacher_course_id")
+            t_course_id=request.GET.get("teacher_course_id")
             c['course_option']=t_course_id
             #print(t_course_id)
             #print(request.user.username)
             ass_list=Assignment.objects.filter(c_id=t_course_id).filter(teacher_email=request.user.username)
             c['ass_list']=ass_list
             
-            if request.POST.get("teacher_assignment_id") != None and request.POST.get("teacher_assignment_id")!="Choose...":
-                #print(request.POST.get("teacher_assignment_id"))
-                c['assign_option']=int(request.POST.get("teacher_assignment_id")) ##beware of the data types
-                '''print("{}=={}".format(type(ass_list[0].assign_id),type(request.POST.get("teacher_assignment_id"))))'''
-                sub_list=Submission.objects.filter(assign_id=int(request.POST.get("teacher_assignment_id")))
+            if request.GET.get("teacher_assignment_id") != None and request.GET.get("teacher_assignment_id")!="Choose...":
+                #print(request.GET.get("teacher_assignment_id"))
+                c['assign_option']=int(request.GET.get("teacher_assignment_id")) ##beware of the data types
+                '''print("{}=={}".format(type(ass_list[0].assign_id),type(request.GET.get("teacher_assignment_id"))))'''
+                sub_list=Submission.objects.filter(assign_id=int(request.GET.get("teacher_assignment_id")))
                 #sub_list.reverse()
                 sub_list_unmarked=[]
                 for sub in sub_list:

@@ -13,6 +13,7 @@ def AssignmentPage(request):
     if request.user.is_authenticated:
         c={}
         c["teacher_email"]=request.user.username
+        c["course_list"]=Courses.objects.all()
         c.update(csrf(request))
         return render(request,'AssignmentPage.html',c)
     else:
@@ -31,7 +32,7 @@ def putAssignmentData(request):
         else:
             t_initial_date=request.POST.get('initial_date',default=None)
         t_assign_due_date=request.POST.get('assign_due_date',default=None)
-        t_assign_max_size_kb=request.POST.get('assign_max_size_kb',default=None)
+        t_assign_max_size_kb=request.POST.get('assignment_max_upload_size',default=1000)
         t_assign_file=request.FILES['assignment_file']
         assign=Assignment(#assign_id=t_assign_id,
                         assign_name=t_assign_name,

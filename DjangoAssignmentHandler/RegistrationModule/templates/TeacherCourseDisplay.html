@@ -18,7 +18,7 @@
       
       <td>5</td>
       <td>
-          <a class="btn btn-outline-primary" href="/Register/RemoveCourse?c_id=1" role="button">
+          <a class="btn btn-outline-primary" href="/Register/RemoveTeacherCourse?c_id=1" role="button">
             Remove
           </a>
             <!--a href="#">#</a-->
@@ -29,15 +29,15 @@
       <td>staticCourse2</td>
       
       <td>6</td>
-      <td><a href="/Register/RemoveCourse?c_id=2">Submit</a></td>
+      <td><a href="/Register/RemoveTeacherCourse?c_id=2">Submit</a></td>
 	</tr>
 	{%for course in course_list %}
 	<tr>
 		<td>{{course.c_id}}</td>
 		<td>{{course.c_name}}</td>
 		
-		<td>{{course.credit}}</td>
-		<td><a class="btn btn-outline-primary" href="/Register/RemoveCourse?c_id={{course.c_id}}" role="button">Remove</a></td>
+		<td>{{course.c_credit}}</td>
+		<td><a class="btn btn-outline-primary" href="/Register/RemoveTeacherCourse?c_id={{course.c_id}}" role="button">Remove</a></td>
 	</tr>
     {%endfor%}
     <tr>
@@ -46,8 +46,8 @@
         </td>
     </tr>
     <tr>
-        <form action="/Register/AddCourse" method="POST" >
-            {{csrftoken}}
+        <form action="/Register/AddTeacherCourse" method="POST" >
+            {% csrf_token %}
             <td>
                 <input type="text" id="c_id" name="c_id" required placeholder="Id" title="Course id, can be string of length 10">        
             </td>

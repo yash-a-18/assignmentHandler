@@ -12,10 +12,10 @@
         <option>static1</option>
         {%for c in course_list %}
              {%if c.c_id == course_option %} 
-              <option value={{c.c_id}} selected>{{c.c_id}}</option>
+              <option value={{c.c_id}} selected>{{c.c_name}}</option>
             {%else%}
             
-            <option value={{c.c_id}}>{{c.c_id}}</option>
+            <option value={{c.c_id}}>{{c.c_name}}</option>
             
             {%endif%}
             
@@ -31,30 +31,23 @@
   <thead>
     <tr>
       <th scope="col">Assignment Id</th>
-      <!--th scope="col">Student Name</th-->
-      <th scope="col">Course Name</th>
       <th scope="col">Due Date & Time</th>
-      <!--<th scope="col">Submission Link</th>-->
+      <th scope="col">File Name</th>
+      <th scope="col">Marks for logic</th>
+      <th scope="col">Marks for uniqueness</th>
+      <th scope="col">Marks for quality</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <!--<td>Yash</td>
-      <td>JT</td>
-      <td>06/06</td>
-      <td><a href="#">#</a></td>-->
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <!--<td>Aastha</td>
-      <td>SE</td>
-      <td>27/06</td>
-      <td><a href="#">#</a></td>-->
-	</tr>
 	{%for sub in sub_list %}
 	<tr>
-		<td>{{sub.assign_id}}</td>
+    <td>{{sub.assign_id}}</td>
+    <td>{{sub.submission_date}}</td>
+    <td>{{sub.submission_file_name}}</td>
+    <td>{{sub.submission_marks_logic}}</td>
+    <td>{{sub.submission_marks_uniqueness}}</td>
+    <td>{{sub.submission_marks_quality}}</td>
 	</tr>
 	{%endfor%}
   </tbody>

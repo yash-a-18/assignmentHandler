@@ -3,7 +3,7 @@
         
         <br>
         <center>
-	<form action="/manageSubmissions/TeacherSubmissionDisplay.html" method="post" style="background-color:wheat">
+	<form action="/manageSubmissions/TeacherSubmissionDisplay.html" method="get" style="background-color:wheat">
 		{% csrf_token %}
 	<div class="form-group row">
     <label for="teacher_course_id" class="col-sm-4 col-form-label">Course Name</label>
@@ -31,20 +31,20 @@
     <div class="col-sm-6">
       <!--input type="text" class="form-control" id="student_assignment_id"-->
     	 <select id="teacher_assignment_id" class="form-control" name="teacher_assignment_id" onchange="this.form.submit()">
-             <option >Choose...</option>
-        
-		{%for ass in ass_list%}
-      {%if ass.assign_id == assign_option %}
-      <option value='{{ass.assign_id}}' selected>{{ass.assign_id}}) {{ass.assign_name}} </option>
-      {%else%}
-      <option value='{{ass.assign_id}}'>{{ass.assign_id}}) {{ass.assign_name}}</option>
-      {%endif%}
-      
-		{%endfor%}
+          <option >Choose...</option>
+          {%for ass in ass_list%}
+            {%if ass.assign_id == assign_option %}
+            <option value='{{ass.assign_id}}' selected>{{ass.assign_id}}) {{ass.assign_name}} </option>
+            {%else%}
+            <option value='{{ass.assign_id}}'>{{ass.assign_id}}) {{ass.assign_name}}</option>
+            {%endif%}
+            
+          {%endfor%}
       </select>
 	</div>
   </div>
   
+</form>
 <!--button type="submit" class="btn btn-primary" style="background-color:saddlebrown">Submit</button-->
   
 
@@ -72,7 +72,11 @@
     <td>{{sub.submission_marks_quality}}</td>
     <td><a href="/manageSubmissions/ViewSubmissionFile.html?stu_email={{sub.student_email}}&assign_id={{sub.assign_id}}">View</a></td>
 	</tr>
-	{%endfor%}
-  </form>
+  {%endfor%}
+  <tr>
+    <td>
+      <a href="/manageAssignments/AssignmentPage.html">add assignments</a>
+    </td>
+  </tr>
 </center>
 {% endblock %}

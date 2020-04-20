@@ -81,12 +81,13 @@ def putStudentData(request):
                 student_id_no=t_id_no,
                 student_image=t_image
                 )
-    #stu.save()
+    stu.save()
     user=User(username=t_stu_email,password=t_password )
-    #user.save()
+    user.save()
 
     for c in t_course_list:
         sc=StudentCourse(student_email=t_stu_email,c_id=c)
+        sc.save()
     
     message="Hey there Student!! , you are now successfully registered"
     c={'message':message}
@@ -136,6 +137,29 @@ def putTeacherData(request):
     
     return render(request ,'Login.html',c)
     #return HttpResponseRedirect('Login.html',c)
+
+def addTeacherCourse(request):
+    if request.user.is_authenticated:
+        id=request.POST.get('c_id')
+        name=request.POST.get('c_name')
+        credit=request.POST.get('c_credit')
+        co=Courses(c_id=id,c_name=name,c_credit=credit)
+        co.save()
+        return HttpResponseRedirect('TeacherCourseDisplay.html')
+    else:
+        return HttpResponseRedirect('/')
+
+
+def removeTeacherCourse(request):
+    if request.user.is_authenticated:
+        id=request.GET.get('c_id')
+        co=Courses.objects.get(c_id=id)
+        co.delete()
+        return HttpResponseRedirect('TeacherCourseDisplay.html')
+    else:
+        return HttpResponseRedirect('/')
+
+
 
 def studentProfile(request):
     try:
