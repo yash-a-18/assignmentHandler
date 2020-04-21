@@ -112,7 +112,7 @@ try{
         //	die();
 }
 try{    
-    $sql_stu_course="create table Teacher (
+    $sql_stu_course="create table StudentCourse (
         student_email VARCHAR(100) NOT NULL unique,
         c_id VARCHAR(10) NOT NULL , 
         PRIMARY KEY (student_email,c_id)
