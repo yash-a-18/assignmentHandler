@@ -24,7 +24,7 @@ def studentReg(request):
 
 def login(request):
     
-    message='Wellcome!'
+    message='Welcome!'
     c={'message':message}
     c.update(csrf(request))
 
@@ -222,3 +222,6 @@ def teacherCourseDisplay(request):
        
     else:
         return HttpResponseRedirect('/')
+
+ def forgotpass(request):
+     return redirect('RestaurantManagementSystem/password_reset/')
