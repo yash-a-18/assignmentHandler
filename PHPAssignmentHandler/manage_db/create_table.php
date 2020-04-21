@@ -11,8 +11,7 @@ try{
         student_last_name VARCHAR(30) NOT NULL ,
         student_dob datetime,
         student_gender VARCHAR(10) NOT NULL,
-        student_semester VARCHAR(10) NOT NULL ,
-        student_course VARCHAR(30) NOT NULL,
+        student_semester VARCHAR(10) NOT NULL ,        
         student_email VARCHAR(100) NOT NULL unique,
         student_address VARCHAR(30) NOT NULL,
         student_address2 VARCHAR(30) NOT NULL,
@@ -112,7 +111,22 @@ try{
             //echo $e->getMessage();
         //	die();
 }
-
+try{    
+    $sql_stu_course="create table Teacher (
+        student_email VARCHAR(100) NOT NULL unique,
+        c_id VARCHAR(10) NOT NULL , 
+        PRIMARY KEY (student_email,c_id)
+        )";
+    
+//remember to remove user when removing student 
+$query_teachers_table=$dbhandler->query($sql_teachers);
+echo "Teacher Table is created successfully<br>";	
+}
+catch(PDOException $e){
+echo "unable to create teachers<br>";
+//echo $e->getMessage();
+//	die();
+}
 
 
 
