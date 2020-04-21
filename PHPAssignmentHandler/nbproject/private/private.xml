@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/user1/Desktop/013_php_proj/student_reg_success.php</file>
-            <file>file:/home/user1/Desktop/013_php_proj/create_table.php</file>
-            <file>file:/home/user1/Desktop/013_php_proj/Login.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/manage_db/create_table.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/login.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/teacher_reg_success.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/Home.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/Teacher_reg.html</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/student_reg_success.php</file>
         </group>
     </open-files>
 </project-private>

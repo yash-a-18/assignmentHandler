@@ -119,7 +119,7 @@ if(isset($_POST["user_email"])&&isset($_POST["user_password"])){
 	//$dbhandler = new PDO('mysql:host=192.168.29.150;dbname=ce4_13','ce4_13','ce4_13');
 	echo "Connection is established...<br/>";
 	$dbhandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$sql="select user_email,user_password from Users where user_email=?";
+	$sql="select * from Users where user_email=?";
 	
 	$prepared_sql=$dbhandler->prepare($sql);
 	$prepared_sql->execute(array($_POST["user_email"]));
@@ -129,12 +129,19 @@ if(isset($_POST["user_email"])&&isset($_POST["user_password"])){
 	if(strcmp($_POST["user_email"],$row["user_email"])==0&&strcmp($_POST["user_password"],$row["user_password"])==0){
 		session_start();
 		$_SESSION['user_email']=$_POST["user_email"];
-		//header("Location:home.php?user_email=".$_POST["user_email"]);
+		
 		echo "success";
+		if(strcmp($row["user_type"],'stu')==0){
+			header('Location:/StudentHome.php?user_email='.$_POST["student_email"]);
+		}
+		else{
+			header('Location:/TeacherHome.php?user_email='.$_POST["student_email"]);
+		}
 	}
 	else{
 		//header('Location:login.php?message=INVALID LOGIN DETAILS');
 		echo "INVALID LOGIN DETAILS";
+		header('Location:login.php');
 	}
 }
 ?>
