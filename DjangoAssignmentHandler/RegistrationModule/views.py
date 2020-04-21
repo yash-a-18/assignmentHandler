@@ -223,5 +223,5 @@ def teacherCourseDisplay(request):
     else:
         return HttpResponseRedirect('/')
 
-def forgotpass(request):
-    return redirect('RestaurantManagementSystem/password_reset/')
+ def forgotpass(request):
+     return redirect('RestaurantManagementSystem/password_reset/')
