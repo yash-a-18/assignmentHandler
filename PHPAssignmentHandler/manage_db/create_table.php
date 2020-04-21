@@ -5,6 +5,7 @@ try{
 	$dbhandler = new PDO('mysql:host=localhost:3306;dbname=ce4_13','root','');
 	echo "Connection is established...<br/>";
 	$dbhandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        
 	$sql_students="create table Student (
         student_first_name VARCHAR(30) NOT NULL ,
         student_middle_name VARCHAR(30) NOT NULL ,
@@ -26,7 +27,7 @@ try{
         echo "Student table successfully created<br>";
 }catch(PDOException $e){
     echo "unable to create student<br>";
-    //echo $e->getMessage();
+    echo $e->getMessage();
 //    die();
 }
 try{    
@@ -49,11 +50,11 @@ try{
         
     //remember to remove user when removing student 
     $query_teachers_table=$dbhandler->query($sql_teachers);
-	echo "Teacher Table is created successfully<br>";	
+	echo "<br>Teacher Table is created successfully<br>";	
 }
 catch(PDOException $e){
-    echo "unable to create teachers<br>";
-	//echo $e->getMessage();
+    echo "<br>unable to create teachers<br>";
+    echo $e->getMessage();
 //	die();
 }
 try{
@@ -61,14 +62,14 @@ try{
     $sql_users="create table Users(
         user_email VARCHAR(100) NOT NULL PRIMARY KEY,
         user_password VARCHAR(15) NOT NULL,
-        user_type VARCHAR(10) NOT ,
+        user_type VARCHAR(10) NOT NULL
     )";
     $query_user_table=$dbhandler->query($sql_users);
     echo "<br>User Table is created successfully<br>";
 }
 catch(PDOException $e){
-    echo "unable to create users<br>";
-    //echo $e->getMessage();
+    echo "<br>unable to create users<br>";
+    echo $e->getMessage();
 //die();
 }
 
@@ -84,8 +85,9 @@ try{
     echo "<br>Course Table is created successfully<br>";	
 }
 catch(PDOException $e){
-//echo $e->getMessage();
-echo "unable to create course<br>";
+
+echo "<br>unable to create course<br>";
+echo $e->getMessage();
 //	die();
 }
 
@@ -107,8 +109,8 @@ try{
         echo "<br>table assignment is created successfully<br>";	
         }
         catch(PDOException $e){
-            echo "unable to create assignments<br>";
-            //echo $e->getMessage();
+            echo "<br>unable to create assignments<br>";
+            echo $e->getMessage();
         //	die();
 }
 try{    
@@ -119,15 +121,39 @@ try{
         )";
     
 //remember to remove user when removing student 
-$query_teachers_table=$dbhandler->query($sql_teachers);
-echo "Teacher Table is created successfully<br>";	
+$query_stu_course=$dbhandler->query($sql_stu_course);
+echo "<br>stu_course Table is created successfully<br>";	
 }
 catch(PDOException $e){
-echo "unable to create teachers<br>";
-//echo $e->getMessage();
+echo "<br>unable to create StudentCourse<br>";
+echo $e->getMessage();
 //	die();
 }
 
-
+try{    
+    $sql_submissions="create table Submissions (
+        assign_id INT(10) UNSIGNED,
+        student_email VARCHAR(100) NOT NULL,
+        c_id VARCHAR(10) NOT NULL ,
+        submission_date Date,
+        submission_file_name VARCHAR(50),
+        submission_marks_logic INT(5),
+        submission_marks_uniqueness INT(5),
+        submission_marks_quality INT(5),
+        FOREIGN KEY (c_id) REFERENCES Courses(c_id) ON DELETE CASCADE,
+        FOREIGN KEY (assign_id) REFERENCES Assignments(assign_id) ON DELETE CASCADE,
+        FOREIGN KEY (student_email) REFERENCES Student(student_email) ON DELETE CASCADE,
+        PRIMARY KEY (student_email,assign_id)
+        )";
+    
+//remember to remove user when removing student 
+$query_submission=$dbhandler->query($sql_submissions);
+echo "<br>submission Table is created successfully<br>";	
+}
+catch(PDOException $e){
+echo "<br>unable to create Submission<br>";
+echo $e->getMessage();
+//	die();
+}
 
 ?>

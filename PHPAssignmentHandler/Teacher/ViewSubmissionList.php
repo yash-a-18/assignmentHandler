@@ -35,7 +35,7 @@
 		<div class="container">	
 			<div class="row justify-content-end">
 			    <div class="col-2">
-					<a class="btn btn-outline-primary" href="HomePage.html" role="button">
+                                <a class="btn btn-outline-primary" href="TeacherHome.php" role="button">
 						Home
 					</a>
 			    </div>
@@ -67,6 +67,7 @@
 			</div>
 		</div>
 	</div>
+
 <?php
 session_start();
 if(isset($_SESSION['user_email'])){
@@ -74,20 +75,22 @@ if(isset($_SESSION['user_email'])){
     //$dbhandler = new PDO('mysql:host=192.168.29.150;dbname=ce4_13','ce4_13','ce4_13');
     echo "Connection is established...<br/>";
     $dbhandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $ret_sql="select assign_id,assign_name,c_id from Assignments";
+    $ret_sql="select student_email,submission_date,submission_file_name,submission_marks_logic,submission_marks_uniqueness,submission_marks_quality from Submissions where assign_id=?" ;
     $ret_prepared_sql=$dbhandler->prepare($ret_sql);
-    $ret_prepared_sql->execute();
-    ?>
-    
-    <div class="container table-responsive">
-  <h2>Patient List</h2>         
+    $ret_prepared_sql->execute(array($_GET["asid"]));
+?>
+<div class="container table-responsive">
+  <h2>assignment List</h2>         
   <table class="table table-hover table-light">
     <thead>
       <tr>
           <th>Assignment ID</th>
-        <th>Assignment Name</th>
-        <th>Course ID</th>
-        <th>Submission List</th>
+        <th>Student Email</th>
+        <th>Submission Date</th>
+        <th>Logic Marks</th>
+        <th>Uniqueness Marks</th>
+        <th>Quality Marks</th>
+        <th>Submitted File</th>
       </tr>
     </thead>
     <tbody>
@@ -95,10 +98,13 @@ if(isset($_SESSION['user_email'])){
     {
 ?>  
       <tr>
-        <td><?php echo $ret_row['assign_id']; ?></td>
-        <td><?php echo $ret_row['assign_name']; ?></td>
-        <td><?php echo $ret_row['c_id']; ?></td>
-        <td><a href="ViewSubmissionList.php?asid=<?php echo $ret_row['assign_id']; ?>&c_id=<?php echo $ret_row['c_id']; ?>">View</a></td>
+        <td><?php echo $_GET['asid']; ?></td>
+        <td><?php echo $ret_row['student_email']; ?></td>
+        <td><?php echo $ret_row['submission_date']; ?></td>
+        <td><?php echo $ret_row['submission_marks_logic']; ?></td>
+        <td><?php echo $ret_row['submission_marks_uniqueness']; ?></td>
+        <td><?php echo $ret_row['submission_marks_quality']; ?></td>
+        <td><a href="ViewFile.php?semail=<?php echo $ret_row['student_email']; ?>&asid=<?php echo $_GET['asid']; ?>&foldername=<?php echo $ret_row['student_email']; ?>&filename=<?php echo $ret_row['submission_file_name']; ?>">View File</a></td>
       </tr>
     <?php }
 }?>      
