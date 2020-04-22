@@ -14,6 +14,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
   <body style="background-color:powderblue;">
+	
+	
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -25,7 +28,7 @@
 	<div class="container">
 		<div class="row justify-content-start">
 		    <div class="col-4">
-		      <h2>Login</h2>
+		      <h2>File</h2>
 		    </div>
 		</div>
 	</div>
@@ -35,27 +38,27 @@
 	<div class="alert alert-primary" role="alert">
 		<div class="container">	
 			<div class="row justify-content-end">
-			    <div class="col-2">
-					<a class="btn btn-outline-primary" href="Login.html" role="button">
+			    <div class="col-3">
+					<a class="btn btn-outline-primary" href="/manageAssignments/TeacherHomePage.html" role="button">
 						Home
 					</a>
 			    </div>
-				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
-					  	About
+				<div class="col-3">
+				      <a class="btn btn-outline-primary" href="/manageAssignments/TeacherAssignmentDisplay.html" role="button">
+					  	Assignments
 					  </a>
 				</div>
-				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
-					  	Courses
+				<div class="col-3">
+				      <a class="btn btn-outline-primary" href="/Register/TeacherProfile.html" role="button">
+					  	Profile
 						</a>
 				</div>
-				<div class="col-2">
-				      <a class="btn btn-outline-primary" href="Login.html" role="button">
-					  	Syllabus
+				<div class="col-3">
+				      <a class="btn btn-outline-primary" href="/Register/Logout.html" role="button">
+					  	Logout
 					  </a>
 				</div>
-				<div class="col-2">
+				<!--<div class="col-2">
 				      <a class="btn btn-outline-primary" href="Login.html" role="button">
 					  	Blog
 						</a>
@@ -64,14 +67,14 @@
 				      <a class="btn btn-outline-primary" href="Login.html" role="button">
 					  	Contact
 					  </a>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="row justify-content-start">
 			<div class="alert alert-success" role="alert">
-				  <h4 class="alert-heading">Well done!</h4>
+				  <h4 class="alert-heading"></h4>
 				  <p>Aww yeah, you successfully read this important alert message.<br> 
 					This example text is going to run a bit longer so that you can<br> 
 					see how spacing within an alert works with this kind of content.</p>
@@ -81,67 +84,46 @@
 			</div>
 		</div>
 	</div>
-
-
-
-<center>
-	<form action="" method="post">
 	
+
+
+
+<br>
+<p><strong><?php echo $_POST['filename'];   session_start();?></strong></p><br>
+<div id="list">
+    <p><iframe src="../uploads/<?php echo $_SESSION['user_email'];?>/<?php echo $_POST['filename'];?>" frameborder="1" height="400"
+      width="95%"></iframe></p>
+</div>
+
+<br>
+        <center>
+	<form action="SetMarks.php" method="post" style="background-color:wheat">
 	<div class="form-group row">
-    <label for="user_email" class="col-sm-4 col-form-label">User Name</label>
+    <label for="submission_marks_logic" class="col-sm-4 col-form-label">Logic</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" id="user_email" name="user_email" required>
-    </div>
+      <input type="text" class="form-control" id="submission_marks_logic" name="submission_marks_logic">
+	</div>
+  </div>
+  <div class="form-group row">
+    <label for=" submission_marks_uniqueness" class="col-sm-4 col-form-label">Uniqueness</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="submission_marks_uniqueness" name="submission_marks_uniqueness">
+	</div>
+  </div>
+  <div class="form-group row">
+    <label for="submission_marks_quality" class="col-sm-4 col-form-label">Quality</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="submission_marks_quality" name="submission_marks_quality">
+      <input type="hidden" id="student_email" name="student_email" value="<?php echo $_POST['semil']?>">
+      <input type="hidden" id="assignment_id" name="assignment_id" value="<?php echo $_POST['id']; ?>">
+	</div>
   </div>
 	
-	<div class="form-group row">
-    <label for="user_password" class="col-sm-4 col-form-label">Password</label>
-    <div class="col-sm-6">
-      <input type="password" class="form-control" id="user_password" name="user_password" required>
-    </div>
-  </div>
-	
-
-  
-  <button type="submit" class="btn btn-primary">Login</button>
-  <br><strong>No Account???....<a href="registration/SignIn.html">Sign In</a></strong>
+<button type="submit" class="btn btn-primary" style="background-color:saddlebrown">Submit</button>
   
   </form>
 </center>
+
+
 </body>
 </html>
-
-
-
-<?php
-if(isset($_POST["user_email"])&&isset($_POST["user_password"])){
-	$dbhandler = new PDO('mysql:host=localhost:3306;dbname=ce4_13','root','');
-	//$dbhandler = new PDO('mysql:host=192.168.29.150;dbname=ce4_13','ce4_13','ce4_13');
-	echo "Connection is established...<br/>";
-	$dbhandler->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$sql="select * from Users where user_email=?";
-	
-	$prepared_sql=$dbhandler->prepare($sql);
-	$prepared_sql->execute(array($_POST["user_email"]));
-	$row=$prepared_sql->fetch();
-	echo "Connection is established...<br/>";
-	
-	if(strcmp($_POST["user_email"],$row["user_email"])==0&&strcmp($_POST["user_password"],$row["user_password"])==0){
-		session_start();
-		$_SESSION['user_email']=$_POST["user_email"];
-		
-		echo "success";
-		if(strcmp($row["user_type"],'stu')==0){
-			header('Location:Student/StudentHome.php?user_email='.$_POST["student_email"]);
-		}
-		else{
-			header('Location:Teacher/TeacherHome.php?user_email='.$_POST["student_email"]);
-		}
-	}
-	else{
-		//header('Location:login.php?message=INVALID LOGIN DETAILS');
-		echo "INVALID LOGIN DETAILS";
-		header('Location:login.php');
-	}
-}
-?>

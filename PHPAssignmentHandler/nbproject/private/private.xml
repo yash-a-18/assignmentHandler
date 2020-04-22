@@ -5,9 +5,13 @@
         <group>
             <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/manage_db/create_table.php</file>
             <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/login.php</file>
-            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/teacher_reg_success.php</file>
-            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/Home.php</file>
-            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/Teacher_reg.html</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/Teacher/TeacherHome.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/Teacher/ViewSubmissionList.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/manage_assignment/SaveSubmission.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/Teacher/SetMarks.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/manage_assignment/SaveAssignment.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/Teacher/ViewFile.php</file>
+            <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/uploads/teacher2@ddu.ac.in/ViewFile.php</file>
             <file>file:/F:/XAMP_server/htdocs/PHP_LAB/PHPAssignmentHandler/registration/student_reg_success.php</file>
         </group>
     </open-files>
