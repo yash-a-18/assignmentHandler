@@ -1,5 +1,6 @@
 {% extends 'Student_base.html' %}
         {%block content%}
+        <h2>Submit Assignment</h2>
         <center>
           <form action="/manageSubmissions/addSubmission" method="post" enctype="multipart/form-data" style="background-color:wheat">
             {% csrf_token %}
